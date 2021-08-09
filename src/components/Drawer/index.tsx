@@ -1,12 +1,10 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { Wrapper } from "../Wrapper";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import {
-  getCode,
   setCode,
   setCurrentIndex,
   getCurrentIndex,
@@ -15,18 +13,7 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import Tree from "../../Tree";
-
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: "auto",
-  },
-  btn: {
-    margin: 10,
-  },
-});
+import { useStyles } from "./styles";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
@@ -35,7 +22,6 @@ export const TemporaryDrawer: React.FC<{ data: any; index: number }> = ({
   index,
 }) => {
   const dispatch = useAppDispatch();
-  const value = useAppSelector(getCode);
   const index_in_tree = useAppSelector(getCurrentIndex);
   const classes = useStyles();
   const [state, setState] = React.useState({
