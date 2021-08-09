@@ -15,8 +15,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Tree from "../../Tree";
 import { useStyles } from "./styles";
 
-type Anchor = "top" | "left" | "bottom" | "right";
-
 export const TemporaryDrawer: React.FC<{ data: any; index: number }> = ({
   data,
   index,
@@ -32,8 +30,7 @@ export const TemporaryDrawer: React.FC<{ data: any; index: number }> = ({
   });
 
   const toggleDrawer =
-    (anchor: Anchor, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
         event.type === "keydown" &&
         ((event as React.KeyboardEvent).key === "Tab" ||
@@ -42,10 +39,10 @@ export const TemporaryDrawer: React.FC<{ data: any; index: number }> = ({
         return;
       }
       dispatch(setCurrentIndex(index));
-      setState({ ...state, [anchor]: open });
+      setState({ ...state, bottom: open });
     };
 
-  const list = (anchor: Anchor) => (
+  const list = () => (
     <Box display="flex">
       <Wrapper items={data["FUNCTIONS"]} type="Функции" />
       <Wrapper items={data["FACTS"]} type="Факты" />
@@ -226,21 +223,17 @@ export const TemporaryDrawer: React.FC<{ data: any; index: number }> = ({
 
   return (
     <div>
-      {(["bottom"] as Anchor[]).map((anchor) => (
-        <React.Fragment key={anchor}>
-          <IconButton onClick={toggleDrawer(anchor, true)}>
-            <AddIcon />
-          </IconButton>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {custom_btns()}
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      <IconButton onClick={toggleDrawer(true)}>
+        <AddIcon />
+      </IconButton>
+      <Drawer
+        anchor={"bottom"}
+        open={state["bottom"]}
+        onClose={toggleDrawer(false)}
+      >
+        {custom_btns()}
+        {list()}
+      </Drawer>
     </div>
   );
 };
