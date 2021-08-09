@@ -6,6 +6,7 @@ import { TreeNode } from "../../Tree";
 import { useAppSelector } from "../../hooks";
 import { getBrace } from "../../store/codeSlice";
 import { Func } from "../Func";
+import { useStyles } from "./styles";
 
 type Props = {
   node: TreeNode;
@@ -13,24 +14,13 @@ type Props = {
 
 export const Node: React.FC<Props> = ({ node }) => {
   const brace = useAppSelector(getBrace);
-
   const [state, setState] = useState(false);
+  const classes = useStyles({ state, brace });
 
   const handleClick = () => setState(!state);
 
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      flexDirection={state ? "column" : "row"}
-      style={{
-        cursor: "pointer",
-        borderLeft: brace ? "2px solid black" : "none",
-        borderRight: brace ? "2px solid black" : "none",
-        margin: 5,
-        padding: 5,
-      }}
-    >
+    <Box className={classes.box}>
       {node.left && node.left.type !== "OPERAND" ? (
         node.left.type === "FUNCTION" ? (
           <Func node={node.left} />
@@ -46,7 +36,7 @@ export const Node: React.FC<Props> = ({ node }) => {
       <Typography
         variant="button"
         onClick={handleClick}
-        style={{ margin: 15, fontSize: 25 }}
+        className={classes.mid}
       >
         {node.value}
       </Typography>
