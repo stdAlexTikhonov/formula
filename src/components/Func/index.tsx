@@ -3,37 +3,23 @@ import Typography from "@material-ui/core/Typography";
 import { Leaf } from "../Leaf";
 import { Node } from "../Node";
 import { TreeNode } from "../../Tree";
-import { useAppSelector } from "../../hooks";
-import { getBrace } from "../../store/codeSlice";
 import { useState } from "react";
+import { useStyles } from "./styles";
 
 type Props = {
   node: TreeNode;
 };
 
 export const Func: React.FC<Props> = ({ node }) => {
-  const brace = useAppSelector(getBrace);
-
-  const [state, setState] = useState(false);
-
+  const [state, setState] = useState<boolean>(false);
+  const classes = useStyles({ state });
   const handleClick = () => setState(!state);
 
   return (
     <Box display="flex" alignItems="center">
-      <Typography style={{ margin: 5, fontSize: 25 }}>{node.value}</Typography>
-      {!state && <Typography style={{ margin: 5, fontSize: 25 }}>(</Typography>}
-      <Box
-        display="flex"
-        alignItems="center"
-        flexDirection={state ? "column" : "row"}
-        style={{
-          cursor: "pointer",
-          borderLeft: state ? "2px solid black" : "none",
-          borderRight: state ? "2px solid black" : "none",
-          margin: 5,
-          padding: 5,
-        }}
-      >
+      <Typography className={classes.typography}>{node.value}</Typography>
+      {!state && <Typography className={classes.typography}>(</Typography>}
+      <Box className={classes.box}>
         {node.left && node.left.type !== "OPERAND" ? (
           node.left.type === "FUNCTION" ? (
             <Func node={node.left} />
@@ -47,10 +33,7 @@ export const Func: React.FC<Props> = ({ node }) => {
           />
         )}
         {node.right && (
-          <Typography
-            style={{ padding: 15, fontSize: 25 }}
-            onClick={handleClick}
-          >
+          <Typography className={classes.mid} onClick={handleClick}>
             ,
           </Typography>
         )}
@@ -68,7 +51,7 @@ export const Func: React.FC<Props> = ({ node }) => {
             />
           ))}
       </Box>
-      {!state && <Typography style={{ margin: 5, fontSize: 25 }}>)</Typography>}
+      {!state && <Typography className={classes.typography}>)</Typography>}
     </Box>
   );
 };
