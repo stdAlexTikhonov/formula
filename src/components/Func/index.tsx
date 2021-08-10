@@ -28,7 +28,7 @@ export const Func: React.FC<Props> = ({ node }) => {
           )
         ) : (
           <Leaf
-            value={node.left ? node.left.value : null}
+            value={node.left ? node.left.value : ""}
             index={node.left ? node.left.index : 0}
           />
         )}
@@ -46,7 +46,7 @@ export const Func: React.FC<Props> = ({ node }) => {
             )
           ) : (
             <Leaf
-              value={node.right ? node.right.value : null}
+              value={node.right ? node.right.value : ""}
               index={node.right ? node.right.index : 0}
             />
           ))}

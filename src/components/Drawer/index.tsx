@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
@@ -15,19 +15,16 @@ import IconButton from "@material-ui/core/IconButton";
 import Tree from "../../Tree";
 import { useStyles } from "./styles";
 
-export const TemporaryDrawer: React.FC<{ data: any; index: number }> = ({
-  data,
-  index,
-}) => {
+export const TemporaryDrawer: React.FC<{
+  data: any;
+  index: number;
+  value?: string;
+}> = ({ data, index, value }) => {
   const dispatch = useAppDispatch();
+
   const index_in_tree = useAppSelector(getCurrentIndex);
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+  const [state, setState] = React.useState(false);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -38,8 +35,9 @@ export const TemporaryDrawer: React.FC<{ data: any; index: number }> = ({
       ) {
         return;
       }
+
       dispatch(setCurrentIndex(index));
-      setState({ ...state, bottom: open });
+      setState(open);
     };
 
   const list = () => (
@@ -223,14 +221,15 @@ export const TemporaryDrawer: React.FC<{ data: any; index: number }> = ({
 
   return (
     <div>
-      <IconButton onClick={toggleDrawer(true)}>
-        <AddIcon />
-      </IconButton>
-      <Drawer
-        anchor={"bottom"}
-        open={state["bottom"]}
-        onClose={toggleDrawer(false)}
-      >
+      {value ? (
+        <Button onClick={toggleDrawer(true)}>{value}</Button>
+      ) : (
+        <IconButton onClick={toggleDrawer(true)}>
+          <AddIcon />
+        </IconButton>
+      )}
+
+      <Drawer anchor={"bottom"} open={state} onClose={toggleDrawer(false)}>
         {custom_btns()}
         {list()}
       </Drawer>

@@ -1,7 +1,7 @@
 export class TreeNode {
   type: "OPERATOR" | "OPERAND" | "FUNCTION";
   index: number;
-  value: string | null;
+  value: string;
   left: TreeNode | null;
   right: TreeNode | null;
   static count: number = 0;
@@ -9,7 +9,7 @@ export class TreeNode {
   constructor(index: number = 0) {
     this.index = index;
     this.type = "OPERAND";
-    this.value = null;
+    this.value = "";
     this.left = null;
     this.right = null;
   }
