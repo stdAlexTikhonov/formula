@@ -4,17 +4,16 @@ import { Node } from "../Node";
 import { Func } from "../Func";
 import Tree, { TreeNode } from "../../Tree";
 import { useEffect } from "react";
-import { Typography } from "@material-ui/core";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { setCurrentIndex, getCode } from "../../store/codeSlice";
+import { useAppSelector } from "../../hooks";
+import { getCode } from "../../store/codeSlice";
+import { useStyles } from "./styles";
 
 export const VisualBuilder = () => {
-  const dispatch = useAppDispatch();
   const code = useAppSelector(getCode);
+  const classes = useStyles();
 
   useEffect(() => {
     traversTree(Tree.root);
-    // console.log(Tree);
   }, [Tree, code]);
 
   const traversTree = (node: TreeNode) => {
@@ -25,14 +24,7 @@ export const VisualBuilder = () => {
   };
 
   return (
-    <Box
-      width="1000px"
-      height="700px"
-      border="1px solid black"
-      margin="auto"
-      overflow="auto"
-      display="flex"
-    >
+    <Box className={classes.box}>
       <Box margin="auto">{traversTree(Tree.root)}</Box>
     </Box>
   );
