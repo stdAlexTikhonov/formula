@@ -9,6 +9,8 @@ import { Func } from "../Func";
 import { useStyles } from "./styles";
 import { DATA } from "../../data";
 import { TemporaryDrawer } from "../Drawer";
+import IconButton from "@material-ui/core/IconButton";
+import AutorenewIcon from "@material-ui/icons/Autorenew";
 
 type Props = {
   node: TreeNode;
@@ -17,15 +19,26 @@ type Props = {
 export const Node: React.FC<Props> = ({ node }) => {
   const brace = useAppSelector(getBrace);
   const [state, setState] = useState(false);
+  const [visible, setVisible] = useState(false);
   const classes = useStyles({ state, brace });
 
-  const handleClick = () => {
-    console.log(node.index);
-    setState(!state);
-  };
+  const handleClick = () => setState(!state);
 
   return (
-    <Box className={classes.box}>
+    <Box
+      className={classes.box}
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+    >
+      {visible && (
+        <IconButton
+          onClick={handleClick}
+          className={classes.btn}
+          size={"small"}
+        >
+          <AutorenewIcon className={classes.icon} />
+        </IconButton>
+      )}
       {node.left && node.left.type !== "OPERAND" ? (
         node.left.type === "FUNCTION" ? (
           <Func node={node.left} />
@@ -38,7 +51,6 @@ export const Node: React.FC<Props> = ({ node }) => {
           index={node.left ? node.left.index : 0}
         />
       )}
-
       <TemporaryDrawer data={DATA} index={node.index} value={node.value} />
       {node.right && node.right.type !== "OPERAND" ? (
         node.right.type === "FUNCTION" ? (

@@ -10,9 +10,18 @@ export const useStyles = makeStyles<Theme, { state: boolean; brace: boolean }>({
     borderRight: ({ brace }) => (brace ? "2px solid black" : "none"),
     margin: 5,
     padding: 5,
+    position: "relative",
   },
   mid: {
     margin: 15,
     fontSize: 25,
+  },
+  btn: {
+    position: "absolute",
+    top: -10,
+    right: -10,
+  },
+  icon: {
+    fontSize: 15,
   },
 });
