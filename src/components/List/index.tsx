@@ -26,6 +26,8 @@ export default function SelectedListItem(props: any) {
     if (node) {
       node.value = value;
       node.type = props.type === "functions" ? "FUNCTION" : "OPERAND";
+      node.left = null;
+      node.right = null;
 
       if (props.type === "functions") {
         node.setLeft();
