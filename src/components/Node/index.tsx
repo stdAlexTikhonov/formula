@@ -7,6 +7,8 @@ import { useAppSelector } from "../../hooks";
 import { getBrace } from "../../store/codeSlice";
 import { Func } from "../Func";
 import { useStyles } from "./styles";
+import { DATA } from "../../data";
+import { TemporaryDrawer } from "../Drawer";
 
 type Props = {
   node: TreeNode;
@@ -17,7 +19,10 @@ export const Node: React.FC<Props> = ({ node }) => {
   const [state, setState] = useState(false);
   const classes = useStyles({ state, brace });
 
-  const handleClick = () => setState(!state);
+  const handleClick = () => {
+    console.log(node.index);
+    setState(!state);
+  };
 
   return (
     <Box className={classes.box}>
@@ -33,13 +38,8 @@ export const Node: React.FC<Props> = ({ node }) => {
           index={node.left ? node.left.index : 0}
         />
       )}
-      <Typography
-        variant="button"
-        onClick={handleClick}
-        className={classes.mid}
-      >
-        {node.value}
-      </Typography>
+
+      <TemporaryDrawer data={DATA} index={node.index} value={node.value} />
       {node.right && node.right.type !== "OPERAND" ? (
         node.right.type === "FUNCTION" ? (
           <Func node={node.right} />
