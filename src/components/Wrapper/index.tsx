@@ -26,7 +26,7 @@ export const Wrapper: React.FC<{ items: string[]; type: string }> = ({
         onChange={(e) => setSearch(e.target.value)}
       />
       <Box className={classes.box}>
-        <List items={filtered} type={mapping_list_types.get(type)} />
+        <List items={filtered} type={type} />
       </Box>
     </Box>
   );
