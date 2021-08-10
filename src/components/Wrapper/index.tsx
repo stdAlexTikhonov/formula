@@ -2,6 +2,8 @@ import TextField from "@material-ui/core/TextField";
 import React, { useState, useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import List from "../List";
+import { mapping_list_types } from "./mapping";
+import { useStyles } from "./styles";
 
 export const Wrapper: React.FC<{ items: string[]; type: string }> = ({
   items,
@@ -9,20 +11,22 @@ export const Wrapper: React.FC<{ items: string[]; type: string }> = ({
 }) => {
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState(items);
+  const classes = useStyles();
+
   useEffect(() => {
-    setFiltered((prev) => items.filter((item) => item.includes(search)));
+    setFiltered(() => items.filter((item) => item.includes(search)));
   }, [search]);
 
   return (
-    <Box width="100%" overflow="hidden">
+    <Box className={classes.wrapper}>
       <TextField
-        label={type}
-        style={{ width: "90%", margin: 10 }}
+        label={mapping_list_types.get(type)}
+        className={classes.text}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <Box maxHeight="300px" overflow="auto" width="100%">
-        <List items={filtered} type={type} />
+      <Box className={classes.box}>
+        <List items={filtered} type={mapping_list_types.get(type)} />
       </Box>
     </Box>
   );

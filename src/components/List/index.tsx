@@ -30,15 +30,14 @@ export default function SelectedListItem(props: any) {
     index: number,
     value: string
   ) => {
-    console.log(props.type);
     setSelectedIndex(index);
     dispatch(setCode(value));
     const node = Tree.find(index_in_tree);
     if (node) {
       node.value = value;
-      node.type = props.type === "Функции" ? "FUNCTION" : "OPERAND";
+      node.type = props.type === "functions" ? "FUNCTION" : "OPERAND";
       //Функции
-      if (props.type === "Функции") {
+      if (props.type === "functions") {
         node.setLeft();
         node.setRight();
       }

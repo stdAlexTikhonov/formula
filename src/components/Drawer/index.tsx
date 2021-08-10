@@ -44,10 +44,10 @@ export const TemporaryDrawer: React.FC<{ data: any; index: number }> = ({
 
   const list = () => (
     <Box display="flex">
-      <Wrapper items={data["FUNCTIONS"]} type="Функции" />
-      <Wrapper items={data["FACTS"]} type="Факты" />
-      <Wrapper items={data["MEASURES"]} type="Меры" />
-      <Wrapper items={data["VARIABLES"]} type="Переменные" />
+      <Wrapper items={data["FUNCTIONS"]} type="functions" />
+      <Wrapper items={data["FACTS"]} type="facts" />
+      <Wrapper items={data["MEASURES"]} type="measures" />
+      <Wrapper items={data["VARIABLES"]} type="variables" />
     </Box>
   );
 
