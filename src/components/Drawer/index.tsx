@@ -3,11 +3,10 @@ import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { Wrapper } from "../Wrapper";
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAppDispatch } from "../../hooks";
 import {
   setCode,
   setCurrentIndex,
-  getCurrentIndex,
   toggleBrace,
   updateTree,
 } from "../../store/codeSlice";
@@ -24,8 +23,6 @@ export const TemporaryDrawer: React.FC<{
   value?: string;
 }> = ({ index, value }) => {
   const dispatch = useAppDispatch();
-
-  const index_in_tree = useAppSelector(getCurrentIndex);
   const classes = useStyles();
   const [state, setState] = React.useState(false);
   const [show_delete, setShowDelete] = useState(false);
@@ -81,7 +78,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("+"));
-          const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "+";
             node.type = "OPERATOR";
@@ -98,7 +94,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("-"));
-          // const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "-";
             node.type = "OPERATOR";
@@ -115,7 +110,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("*"));
-          // const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "*";
             node.type = "OPERATOR";
@@ -132,7 +126,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("/"));
-          // const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "/";
             node.type = "OPERATOR";
@@ -149,7 +142,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("OR"));
-          // const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "OR";
             node.type = "OPERATOR";
@@ -166,7 +158,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("XOR"));
-          // const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "XOR";
             node.type = "FUNCTION";
@@ -182,7 +173,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("AND"));
-          // const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "AND";
             node.type = "OPERATOR";
@@ -199,7 +189,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("NOT"));
-          // const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "NOT";
             node.type = "FUNCTION";
@@ -215,7 +204,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("ROUND"));
-          // const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "ROUND";
             node.type = "FUNCTION";
@@ -231,7 +219,6 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(setCode("SQRT"));
-          // const node = Tree.find(index_in_tree);
           if (node) {
             node.value = "SQRT";
             node.type = "FUNCTION";
