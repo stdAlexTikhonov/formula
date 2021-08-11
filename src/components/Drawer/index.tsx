@@ -4,10 +4,16 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { Wrapper } from "../Wrapper";
 import { useAppDispatch } from "../../hooks";
-import { setCurrentIndex, updateTree } from "../../store/codeSlice";
+import {
+  setCode,
+  setCurrentIndex,
+  toggleBrace,
+  updateTree,
+} from "../../store/codeSlice";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import Tree from "../../Tree";
+import { useStyles } from "./styles";
 import { DATA } from "../../data";
 import ClearIcon from "@material-ui/icons/Clear";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
@@ -18,6 +24,7 @@ export const TemporaryDrawer: React.FC<{
   value?: string;
 }> = ({ index, value }) => {
   const dispatch = useAppDispatch();
+  const classes = useStyles();
   const [state, setState] = React.useState(false);
   const [show_delete, setShowDelete] = useState(false);
   const [node] = useState(Tree.find(index));

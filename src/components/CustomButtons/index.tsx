@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 import { useStyles } from "./styles";
 import { useAppDispatch } from "../../hooks";
 import { setCode, toggleBrace, updateTree } from "../../store/codeSlice";
-import TextField from "@material-ui/core/TextField";
 
 type Props = {
   node: TreeNode;
@@ -16,16 +15,6 @@ export const CustomButtons: React.FC<Props> = ({ node }) => {
 
   return (
     <Box display="flex" justifyContent="center">
-      <TextField
-        placeholder="Пользовательский ввод"
-        defaultValue={node.value ? node.value : ""}
-        style={{ width: 200, alignSelf: "center" }}
-        onChange={(e) => {
-          setCode(e.target.value);
-          node.value = e.target.value;
-          dispatch(updateTree());
-        }}
-      />
       <Button
         className={classes.btn}
         onClick={() => {
