@@ -59,8 +59,8 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "+";
             node.type = "OPERATOR";
-            node.setLeft();
-            node.setRight();
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
           }
         }}
         variant="outlined"
@@ -75,8 +75,8 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "-";
             node.type = "OPERATOR";
-            node.setLeft();
-            node.setRight();
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
           }
         }}
         variant="outlined"
@@ -91,8 +91,8 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "*";
             node.type = "OPERATOR";
-            node.setLeft();
-            node.setRight();
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
           }
         }}
         variant="outlined"
@@ -107,8 +107,8 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "/";
             node.type = "OPERATOR";
-            node.setLeft();
-            node.setRight();
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
           }
         }}
         variant="outlined"
@@ -123,8 +123,8 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "OR";
             node.type = "OPERATOR";
-            node.setLeft();
-            node.setRight();
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
           }
         }}
         variant="outlined"
@@ -139,7 +139,7 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "XOR";
             node.type = "FUNCTION";
-            node.setLeft();
+            if (!node.left) node.setLeft();
           }
         }}
         variant="outlined"
@@ -154,8 +154,8 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "AND";
             node.type = "OPERATOR";
-            node.setLeft();
-            node.setRight();
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
           }
         }}
         variant="outlined"
@@ -170,7 +170,7 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "NOT";
             node.type = "FUNCTION";
-            node.setLeft();
+            if (!node.left) node.setLeft();
           }
         }}
         variant="outlined"
@@ -185,7 +185,7 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "ROUND";
             node.type = "FUNCTION";
-            node.setLeft();
+            if (!node.left) node.setLeft();
           }
         }}
         variant="outlined"
@@ -200,7 +200,7 @@ export const TemporaryDrawer: React.FC<{
           if (node) {
             node.value = "SQRT";
             node.type = "FUNCTION";
-            node.setLeft();
+            if (!node.left) node.setLeft();
           }
         }}
         variant="outlined"
