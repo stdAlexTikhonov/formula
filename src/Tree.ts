@@ -75,6 +75,30 @@ class Tree {
         );
     }
   }
+
+  swap_with_left(index: number) {
+    const node = this.find(index);
+    const child = node.left;
+    if (node) {
+      if (node.type !== "OPERATOR" || child.type !== "OPERATOR") return false;
+      else {
+        [node.value, child.value] = [child.value, node.value];
+      }
+    }
+    return false;
+  }
+
+  swap_with_right(index: number) {
+    const node = this.find(index);
+    const child = node.right;
+    if (node) {
+      if (node.type !== "OPERATOR" || child.type !== "OPERATOR") return false;
+      else {
+        [node.value, child.value] = [child.value, node.value];
+      }
+    }
+    return false;
+  }
 }
 
 export default new Tree();
