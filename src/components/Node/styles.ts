@@ -18,8 +18,8 @@ export const useStyles = makeStyles<Theme, { state: boolean; brace: boolean }>({
   },
   btn: {
     position: "absolute",
-    top: -10,
-    right: -10,
+    top: -18,
+    right: -12,
   },
   icon: {
     fontSize: 15,

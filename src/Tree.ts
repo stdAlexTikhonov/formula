@@ -1,3 +1,5 @@
+import { ThreeSixtyOutlined } from "@material-ui/icons";
+
 export class TreeNode {
   type: "OPERATOR" | "OPERAND" | "FUNCTION";
   index: number;
@@ -30,7 +32,6 @@ export class TreeNode {
 }
 class Tree {
   root: TreeNode = new TreeNode();
-  update: boolean = false;
 
   find(index: number) {
     if (this.root.index === index) {
@@ -49,8 +50,30 @@ class Tree {
   }
 
   delete(index: number) {
-    this.update = !this.update;
     if (this.root.index === index) this.root = new TreeNode();
+    else if (this.root.left && this.root.left.index === index)
+      this.root.left = new TreeNode(this.root.left.index);
+    else if (this.root.right && this.root.right.index === index)
+      this.root.right = new TreeNode(this.root.right.index);
+    else
+      return (
+        this._delete(this.root.left, index) ||
+        this._delete(this.root.right, index)
+      );
+  }
+
+  _delete(node: TreeNode | null, index: number): any {
+    if (node) {
+      if (node.index === index) node = new TreeNode(node.index);
+      else if (node.left && node.left.index === index)
+        node.left = new TreeNode(node.left.index);
+      else if (node.right && node.right.index === index)
+        node.right = new TreeNode(node.right.index);
+      else
+        return (
+          this._delete(node.left, index) || this._delete(node.right, index)
+        );
+    }
   }
 }
 
