@@ -46,6 +46,10 @@ class Tree {
       else return this._find(node.left, index) || this._find(node.right, index);
     } else return null;
   }
+
+  delete(index: number) {
+    if (this.root.index === index) this.root = new TreeNode();
+  }
 }
 
 export default new Tree();

@@ -1,13 +1,11 @@
 import { Box } from "@material-ui/core";
 import { Leaf } from "../Leaf";
-import Typography from "@material-ui/core/Typography";
 import { useState } from "react";
 import { TreeNode } from "../../Tree";
 import { useAppSelector } from "../../hooks";
 import { getBrace } from "../../store/codeSlice";
 import { Func } from "../Func";
 import { useStyles } from "./styles";
-import { DATA } from "../../data";
 import { TemporaryDrawer } from "../Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
@@ -51,7 +49,7 @@ export const Node: React.FC<Props> = ({ node }) => {
           index={node.left ? node.left.index : 0}
         />
       )}
-      <TemporaryDrawer data={DATA} index={node.index} value={node.value} />
+      <TemporaryDrawer index={node.index} value={node.value} />
       {node.right && node.right.type !== "OPERAND" ? (
         node.right.type === "FUNCTION" ? (
           <Func node={node.right} />

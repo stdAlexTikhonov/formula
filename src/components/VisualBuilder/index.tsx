@@ -14,7 +14,7 @@ export const VisualBuilder = () => {
 
   useEffect(() => {
     traversTree(Tree.root);
-  }, [Tree]);
+  }, [Tree, code]);
 
   const traversTree = (node: TreeNode) => {
     if (node.type === "OPERAND")

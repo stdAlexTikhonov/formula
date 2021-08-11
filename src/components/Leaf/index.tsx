@@ -1,5 +1,4 @@
 import { TemporaryDrawer } from "../Drawer";
-import { DATA } from "../../data";
 
 type Props = {
   value?: string;
@@ -7,5 +6,5 @@ type Props = {
 };
 
 export const Leaf: React.FC<Props> = ({ value = "", index }) => {
-  return <TemporaryDrawer data={DATA} index={index || 0} value={value} />;
+  return <TemporaryDrawer index={index || 0} value={value} />;
 };

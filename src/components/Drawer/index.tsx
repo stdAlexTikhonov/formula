@@ -14,17 +14,19 @@ import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import Tree from "../../Tree";
 import { useStyles } from "./styles";
+import { DATA } from "../../data";
+import ClearIcon from "@material-ui/icons/Clear";
 
 export const TemporaryDrawer: React.FC<{
-  data: any;
   index: number;
   value?: string;
-}> = ({ data, index, value }) => {
+}> = ({ index, value }) => {
   const dispatch = useAppDispatch();
 
   const index_in_tree = useAppSelector(getCurrentIndex);
   const classes = useStyles();
   const [state, setState] = React.useState(false);
+  const [show_delete, setShowDelete] = useState(false);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -40,12 +42,18 @@ export const TemporaryDrawer: React.FC<{
       setState(open);
     };
 
+  const handleDelete = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    Tree.delete(index);
+  };
+
   const list = () => (
     <Box display="flex">
-      <Wrapper items={data["FUNCTIONS"]} type="functions" />
-      <Wrapper items={data["FACTS"]} type="facts" />
-      <Wrapper items={data["MEASURES"]} type="measures" />
-      <Wrapper items={data["VARIABLES"]} type="variables" />
+      <Wrapper items={DATA["FUNCTIONS"]} type="functions" />
+      <Wrapper items={DATA["FACTS"]} type="facts" />
+      <Wrapper items={DATA["MEASURES"]} type="measures" />
+      <Wrapper items={DATA["VARIABLES"]} type="variables" />
     </Box>
   );
 
@@ -222,7 +230,24 @@ export const TemporaryDrawer: React.FC<{
   return (
     <div>
       {value ? (
-        <Button onClick={toggleDrawer(true)}>{value}</Button>
+        <Button
+          onClick={toggleDrawer(true)}
+          disableRipple={true}
+          style={{ position: "relative" }}
+          onMouseEnter={() => setShowDelete(true)}
+          onMouseLeave={() => setShowDelete(false)}
+        >
+          {value}
+          {show_delete && (
+            <IconButton
+              size="small"
+              onClick={handleDelete}
+              style={{ position: "absolute", top: -5, right: -5 }}
+            >
+              <ClearIcon style={{ fontSize: 15 }} />
+            </IconButton>
+          )}
+        </Button>
       ) : (
         <IconButton onClick={toggleDrawer(true)}>
           <AddIcon />

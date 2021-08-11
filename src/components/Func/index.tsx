@@ -6,7 +6,6 @@ import { TreeNode } from "../../Tree";
 import { useState } from "react";
 import { useStyles } from "./styles";
 import { TemporaryDrawer } from "../Drawer";
-import { DATA } from "../../data";
 
 type Props = {
   node: TreeNode;
@@ -19,7 +18,7 @@ export const Func: React.FC<Props> = ({ node }) => {
 
   return (
     <Box display="flex" alignItems="center">
-      <TemporaryDrawer data={DATA} index={node.index} value={node.value} />
+      <TemporaryDrawer index={node.index} value={node.value} />
       {!state && <Typography className={classes.typography}>(</Typography>}
       <Box className={classes.box}>
         {node.left && node.left.type !== "OPERAND" ? (
