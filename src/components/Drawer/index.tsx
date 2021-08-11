@@ -9,6 +9,7 @@ import {
   setCurrentIndex,
   getCurrentIndex,
   toggleBrace,
+  updateTree,
 } from "../../store/codeSlice";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
@@ -46,6 +47,7 @@ export const TemporaryDrawer: React.FC<{
     e.preventDefault();
     e.stopPropagation();
     Tree.delete(index);
+    dispatch(updateTree());
   };
 
   const list = () => (
@@ -86,6 +88,7 @@ export const TemporaryDrawer: React.FC<{
             if (!node.left) node.setLeft();
             if (!node.right) node.setRight();
           }
+          dispatch(updateTree());
         }}
         variant="outlined"
       >
@@ -102,6 +105,7 @@ export const TemporaryDrawer: React.FC<{
             if (!node.left) node.setLeft();
             if (!node.right) node.setRight();
           }
+          dispatch(updateTree());
         }}
         variant="outlined"
       >
@@ -118,6 +122,7 @@ export const TemporaryDrawer: React.FC<{
             if (!node.left) node.setLeft();
             if (!node.right) node.setRight();
           }
+          dispatch(updateTree());
         }}
         variant="outlined"
       >
@@ -134,6 +139,7 @@ export const TemporaryDrawer: React.FC<{
             if (!node.left) node.setLeft();
             if (!node.right) node.setRight();
           }
+          dispatch(updateTree());
         }}
         variant="outlined"
       >
@@ -149,6 +155,7 @@ export const TemporaryDrawer: React.FC<{
             node.type = "FUNCTION";
             if (!node.left) node.setLeft();
           }
+          dispatch(updateTree());
         }}
         variant="outlined"
       >
@@ -165,6 +172,7 @@ export const TemporaryDrawer: React.FC<{
             if (!node.left) node.setLeft();
             if (!node.right) node.setRight();
           }
+          dispatch(updateTree());
         }}
         variant="outlined"
       >
@@ -180,6 +188,7 @@ export const TemporaryDrawer: React.FC<{
             node.type = "FUNCTION";
             if (!node.left) node.setLeft();
           }
+          dispatch(updateTree());
         }}
         variant="outlined"
       >
@@ -195,6 +204,7 @@ export const TemporaryDrawer: React.FC<{
             node.type = "FUNCTION";
             if (!node.left) node.setLeft();
           }
+          dispatch(updateTree());
         }}
         variant="outlined"
       >
@@ -210,6 +220,7 @@ export const TemporaryDrawer: React.FC<{
             node.type = "FUNCTION";
             if (!node.left) node.setLeft();
           }
+          dispatch(updateTree());
         }}
         variant="outlined"
       >
@@ -219,6 +230,7 @@ export const TemporaryDrawer: React.FC<{
         className={classes.btn}
         onClick={() => {
           dispatch(toggleBrace());
+          dispatch(updateTree());
         }}
         variant="outlined"
       >

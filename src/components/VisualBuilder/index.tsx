@@ -5,16 +5,16 @@ import { Func } from "../Func";
 import Tree, { TreeNode } from "../../Tree";
 import { useEffect } from "react";
 import { useAppSelector } from "../../hooks";
-import { getCode } from "../../store/codeSlice";
+import { getUpdateTree } from "../../store/codeSlice";
 import { useStyles } from "./styles";
 
 export const VisualBuilder = () => {
-  const code = useAppSelector(getCode);
+  const update_tree = useAppSelector(getUpdateTree);
   const classes = useStyles();
 
   useEffect(() => {
     traversTree(Tree.root);
-  }, [Tree, code]);
+  }, [update_tree]);
 
   const traversTree = (node: TreeNode) => {
     if (node.type === "OPERAND")

@@ -30,6 +30,7 @@ export class TreeNode {
 }
 class Tree {
   root: TreeNode = new TreeNode();
+  update: boolean = false;
 
   find(index: number) {
     if (this.root.index === index) {
@@ -48,6 +49,7 @@ class Tree {
   }
 
   delete(index: number) {
+    this.update = !this.update;
     if (this.root.index === index) this.root = new TreeNode();
   }
 }

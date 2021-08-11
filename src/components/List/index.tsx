@@ -5,7 +5,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/Inbox";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { setCode, getCurrentIndex } from "../../store/codeSlice";
+import { setCode, getCurrentIndex, updateTree } from "../../store/codeSlice";
 import Tree from "../../Tree";
 import { useStyles } from "./styles";
 
@@ -33,6 +33,7 @@ export default function SelectedListItem(props: any) {
         node.setLeft();
         node.setRight();
       }
+      dispatch(updateTree());
     }
   };
 
