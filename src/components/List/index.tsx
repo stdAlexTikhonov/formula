@@ -30,8 +30,7 @@ export default function SelectedListItem(props: any) {
       node.right = null;
 
       if (props.type === "functions") {
-        node.setLeft();
-        node.setRight();
+        node.addArguments(3);
       }
       dispatch(updateTree());
     }

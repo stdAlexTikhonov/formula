@@ -16,41 +16,36 @@ export const Func: React.FC<Props> = ({ node }) => {
   const classes = useStyles({ state });
   const handleClick = () => setState(!state);
 
+  const getComponent = (node: TreeNode) => {
+    switch (node.type) {
+      case "FUNCTION":
+        return <Func node={node} />;
+
+      case "OPERATOR":
+        return <Node node={node} />;
+      default:
+        return <Leaf value={node.value} index={node.index} />;
+    }
+  };
+
   return (
     <Box display="flex" alignItems="center">
       <TemporaryDrawer index={node.index} value={node.value} />
       {!state && <Typography className={classes.typography}>(</Typography>}
       <Box className={classes.box}>
-        {node.left && node.left.type !== "OPERAND" ? (
-          node.left.type === "FUNCTION" ? (
-            <Func node={node.left} />
-          ) : (
-            <Node node={node.left} />
-          )
-        ) : (
-          <Leaf
-            value={node.left ? node.left.value : ""}
-            index={node.left ? node.left.index : 0}
-          />
-        )}
-        {node.right && (
-          <Typography className={classes.mid} onClick={handleClick}>
-            ,
-          </Typography>
-        )}
-        {node.right &&
-          (node.right.type !== "OPERAND" ? (
-            node.right.type === "FUNCTION" ? (
-              <Func node={node.right} />
+        {node.args &&
+          node.args.map((arg: TreeNode, i: number) => {
+            return i === node.args.length - 1 ? (
+              getComponent(arg)
             ) : (
-              <Node node={node.right} />
-            )
-          ) : (
-            <Leaf
-              value={node.right ? node.right.value : ""}
-              index={node.right ? node.right.index : 0}
-            />
-          ))}
+              <>
+                {getComponent(arg)}
+                <Typography className={classes.mid} onClick={handleClick}>
+                  ,
+                </Typography>
+              </>
+            );
+          })}
       </Box>
       {!state && <Typography className={classes.typography}>)</Typography>}
     </Box>
