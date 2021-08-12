@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { setCode, getCurrentIndex, updateTree } from "../../store/codeSlice";
 import Tree from "../../Tree";
 import { useStyles } from "./styles";
+import { DATA } from "../../data";
 
 export default function SelectedListItem(props: any) {
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ export default function SelectedListItem(props: any) {
       node.right = null;
 
       if (props.type === "functions") {
-        node.addArguments(3);
+        node.addArguments(DATA["AGRGUMENTS"][index]);
       }
       dispatch(updateTree());
     }

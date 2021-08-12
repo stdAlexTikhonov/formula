@@ -54,4 +54,5 @@ export const DATA = {
     "endwith",
     "contains",
   ],
+  AGRGUMENTS: [0, 0, 0, 0, 3, 1, 0, 3, 2, 3, 3, 1, 1, 1, 1, 3],
 };
