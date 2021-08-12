@@ -10,6 +10,7 @@ export const useStyles = makeStyles<Theme, { state: boolean }>({
     flexDirection: ({ state }) => (state ? "column" : "row"),
     alignItems: "center",
     display: "flex",
+    borderRadius: 10,
   },
   typography: {
     margin: 5,

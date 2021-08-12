@@ -118,7 +118,7 @@ export const CustomButtons: React.FC<Props> = ({ node }) => {
           if (node) {
             node.value = "NOT";
             node.type = "FUNCTION";
-            if (!node.left) node.setLeft();
+            if (!node.left) node.addArguments(1);
           }
           dispatch(updateTree());
         }}

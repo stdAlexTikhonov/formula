@@ -11,6 +11,7 @@ export const useStyles = makeStyles<Theme, { state: boolean; brace: boolean }>({
     margin: 5,
     padding: 5,
     position: "relative",
+    borderRadius: 10,
   },
   mid: {
     margin: 15,
