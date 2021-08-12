@@ -31,7 +31,10 @@ export default function SelectedListItem(props: any) {
       node.right = null;
 
       if (props.type === "functions") {
-        node.addArguments(DATA["AGRGUMENTS"][index]);
+        if (node.args.length !== DATA["AGRGUMENTS"][index]) {
+          node.args = [];
+          node.addArguments(DATA["AGRGUMENTS"][index]);
+        }
       }
       dispatch(updateTree());
     }
