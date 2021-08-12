@@ -98,21 +98,6 @@ export const CustomButtons: React.FC<Props> = ({ node }) => {
       <Button
         className={classes.btn}
         onClick={() => {
-          dispatch(setCode("XOR"));
-          if (node) {
-            node.value = "XOR";
-            node.type = "FUNCTION";
-            if (!node.left) node.setLeft();
-          }
-          dispatch(updateTree());
-        }}
-        variant="outlined"
-      >
-        XOR
-      </Button>
-      <Button
-        className={classes.btn}
-        onClick={() => {
           dispatch(setCode("AND"));
           if (node) {
             node.value = "AND";
@@ -144,32 +129,98 @@ export const CustomButtons: React.FC<Props> = ({ node }) => {
       <Button
         className={classes.btn}
         onClick={() => {
-          dispatch(setCode("ROUND"));
+          dispatch(setCode("<"));
           if (node) {
-            node.value = "ROUND";
-            node.type = "FUNCTION";
+            node.value = "<";
+            node.type = "OPERATOR";
             if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
           }
           dispatch(updateTree());
         }}
         variant="outlined"
       >
-        ROUND
+        {"<"}
       </Button>
       <Button
         className={classes.btn}
         onClick={() => {
-          dispatch(setCode("SQRT"));
+          dispatch(setCode("<="));
           if (node) {
-            node.value = "SQRT";
-            node.type = "FUNCTION";
+            node.value = "<=";
+            node.type = "OPERATOR";
             if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
           }
           dispatch(updateTree());
         }}
         variant="outlined"
       >
-        SQRT
+        {"<="}
+      </Button>
+      <Button
+        className={classes.btn}
+        onClick={() => {
+          dispatch(setCode("=="));
+          if (node) {
+            node.value = "==";
+            node.type = "OPERATOR";
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
+          }
+          dispatch(updateTree());
+        }}
+        variant="outlined"
+      >
+        {"=="}
+      </Button>
+      <Button
+        className={classes.btn}
+        onClick={() => {
+          dispatch(setCode("!="));
+          if (node) {
+            node.value = "!=";
+            node.type = "OPERATOR";
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
+          }
+          dispatch(updateTree());
+        }}
+        variant="outlined"
+      >
+        {"!="}
+      </Button>
+      <Button
+        className={classes.btn}
+        onClick={() => {
+          dispatch(setCode(">"));
+          if (node) {
+            node.value = ">";
+            node.type = "OPERATOR";
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
+          }
+          dispatch(updateTree());
+        }}
+        variant="outlined"
+      >
+        {">"}
+      </Button>
+      <Button
+        className={classes.btn}
+        onClick={() => {
+          dispatch(setCode(">="));
+          if (node) {
+            node.value = ">=";
+            node.type = "OPERATOR";
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
+          }
+          dispatch(updateTree());
+        }}
+        variant="outlined"
+      >
+        {">="}
       </Button>
       <Button
         className={classes.btn}
