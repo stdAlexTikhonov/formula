@@ -30,7 +30,7 @@ export const Func: React.FC<Props> = ({ node }) => {
       case "OPERATOR":
         return <Node node={node} />;
       default:
-        return <Leaf value={node.value} index={node.index} />;
+        return <Leaf index={node.index} />;
     }
   };
 
@@ -46,7 +46,7 @@ export const Func: React.FC<Props> = ({ node }) => {
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
-      <TemporaryDrawer index={node.index} value={node.value} />
+      <TemporaryDrawer index={node.index} />
       {!state && <Typography className={classes.typography}>(</Typography>}
       <Box className={classes.box}>
         {node.args &&
