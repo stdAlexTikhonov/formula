@@ -8,7 +8,6 @@ import { setCurrentIndex, updateTree } from "../../store/codeSlice";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import Tree from "../../Tree";
-import { useStyles } from "./styles";
 import { DATA } from "../../data";
 import ClearIcon from "@material-ui/icons/Clear";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
@@ -18,7 +17,6 @@ export const TemporaryDrawer: React.FC<{
   index: number;
 }> = ({ index }) => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
   const [state, setState] = React.useState(false);
   const [show_delete, setShowDelete] = useState(false);
   const [node] = useState(Tree.find(index));
