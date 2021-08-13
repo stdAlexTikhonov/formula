@@ -31,7 +31,7 @@ export const TemporaryDrawer: React.FC<{
         return;
       }
 
-      dispatch(setCurrentIndex(index));
+      if (open) dispatch(setCurrentIndex(index));
       setState(open);
     };
 
