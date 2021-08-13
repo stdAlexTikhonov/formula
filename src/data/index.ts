@@ -53,6 +53,15 @@ export const DATA = {
     "startwith",
     "endwith",
     "contains",
+    "power",
+    "ln",
+    "exp",
+    "sqrt",
+    "abs",
+    "ceil",
+    "floor",
   ],
-  AGRGUMENTS: [0, 0, 0, 0, 3, 1, 0, 3, 2, 3, 3, 1, 1, 1, 1, 3],
+  AGRGUMENTS: [
+    0, 0, 0, 0, 3, 1, 0, 3, 2, 3, 3, 1, 1, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1,
+  ],
 };

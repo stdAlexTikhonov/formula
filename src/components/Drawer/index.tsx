@@ -4,12 +4,7 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { Wrapper } from "../Wrapper";
 import { useAppDispatch } from "../../hooks";
-import {
-  setCode,
-  setCurrentIndex,
-  toggleBrace,
-  updateTree,
-} from "../../store/codeSlice";
+import { setCurrentIndex, updateTree } from "../../store/codeSlice";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import Tree from "../../Tree";
