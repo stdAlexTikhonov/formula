@@ -29,6 +29,7 @@ export default function SelectedListItem(props: any) {
       node.type = props.type === "functions" ? "FUNCTION" : "OPERAND";
       node.left = null;
       node.right = null;
+      node.user_input = false;
 
       if (props.type === "functions") {
         if (node.args.length !== DATA["AGRGUMENTS"][index]) {
