@@ -5,16 +5,7 @@ import { useStyles } from "./styles";
 import { useAppDispatch } from "../../hooks";
 import { setCode, toggleBrace, updateTree } from "../../store/codeSlice";
 import { UserInput } from "../UserInput";
-import greater from "./greater.svg";
-import less from "./less.svg";
-import plus from "./plus.svg";
-import minus from "./minus.svg";
-import eq from "./eq.svg";
-import mult from "./mult.svg";
-import divide from "./divide.svg";
-import gre_or_eq from "./gre_or_eq.svg";
-import less_or_eq from "./less_or_eq.svg";
-import not_eq from "./not_eq.svg";
+import { CustomIcon } from "../CustomIcon";
 
 type Props = {
   node: TreeNode;
@@ -43,7 +34,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={plus} width={20} height={20} alt="+" />
+        <CustomIcon value="+" />
       </Button>
       <Button
         className={classes.btn}
@@ -60,7 +51,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={minus} width={20} height={20} alt="-" />
+        <CustomIcon value="-" />
       </Button>
       <Button
         className={classes.btn}
@@ -77,7 +68,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={mult} width={20} height={20} alt="*" />
+        <CustomIcon value="*" />
       </Button>
       <Button
         className={classes.btn}
@@ -94,7 +85,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={divide} width={20} height={20} alt="/" />
+        <CustomIcon value="/" />
       </Button>
       <Button
         className={classes.btn}
@@ -161,7 +152,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={less} width={20} height={20} alt="less" />
+        <CustomIcon value="<" />
       </Button>
       <Button
         className={classes.btn}
@@ -178,7 +169,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={less_or_eq} width={20} height={20} alt="<=>" />
+        <CustomIcon value="<=" />
       </Button>
       <Button
         className={classes.btn}
@@ -195,7 +186,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={eq} width={20} height={20} alt="==" />
+        <CustomIcon value="==" />
       </Button>
       <Button
         className={classes.btn}
@@ -212,7 +203,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={not_eq} width={20} height={20} alt="!=" />
+        <CustomIcon value="!=" />
       </Button>
       <Button
         className={classes.btn}
@@ -229,7 +220,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={greater} width={20} height={20} alt=">" />
+        <CustomIcon value=">" />
       </Button>
       <Button
         className={classes.btn}
@@ -246,7 +237,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
         }}
         variant="outlined"
       >
-        <img src={gre_or_eq} width={20} height={20} alt=">=" />
+        <CustomIcon value=">=" />
       </Button>
       <Button
         className={classes.btn}
