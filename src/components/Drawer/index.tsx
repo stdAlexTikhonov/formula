@@ -12,6 +12,7 @@ import { DATA } from "../../data";
 import ClearIcon from "@material-ui/icons/Clear";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import { CustomButtons } from "../CustomButtons";
+import { CustomIcon } from "../CustomIcon";
 
 export const TemporaryDrawer: React.FC<{
   index: number;
@@ -77,7 +78,11 @@ export const TemporaryDrawer: React.FC<{
           onMouseEnter={() => setShowDelete(true)}
           onMouseLeave={() => setShowDelete(false)}
         >
-          {node.user_input ? <Box color="red">"{value}"</Box> : value}
+          {node.user_input ? (
+            <Box color="red">"{value}"</Box>
+          ) : (
+            <CustomIcon value={value} />
+          )}
           {show_delete && (
             <IconButton
               size="small"
