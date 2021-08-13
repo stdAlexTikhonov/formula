@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import { useStyles } from "./styles";
 import { useAppDispatch } from "../../hooks";
 import { setCode, toggleBrace, updateTree } from "../../store/codeSlice";
+import { UserInput } from "../UserInput";
 
 type Props = {
   node: TreeNode;
@@ -15,6 +16,7 @@ export const CustomButtons: React.FC<Props> = ({ node }) => {
 
   return (
     <Box display="flex" justifyContent="center">
+      <UserInput />
       <Button
         className={classes.btn}
         onClick={() => {
