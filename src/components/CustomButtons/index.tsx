@@ -8,15 +8,16 @@ import { UserInput } from "../UserInput";
 
 type Props = {
   node: TreeNode;
+  setNode: any;
 };
 
-export const CustomButtons: React.FC<Props> = ({ node }) => {
+export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
 
   return (
     <Box display="flex" justifyContent="center">
-      <UserInput />
+      <UserInput setNode={setNode} />
       <Button
         className={classes.btn}
         onClick={() => {

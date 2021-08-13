@@ -20,7 +20,7 @@ export const TemporaryDrawer: React.FC<{
   const dispatch = useAppDispatch();
   const [state, setState] = React.useState(false);
   const [show_delete, setShowDelete] = useState(false);
-  const [node] = useState(Tree.find(index));
+  const [node, setNode] = useState(Tree.find(index));
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -40,6 +40,7 @@ export const TemporaryDrawer: React.FC<{
     e.preventDefault();
     e.stopPropagation();
     Tree.delete(index);
+    node.user_input = false;
     dispatch(updateTree());
   };
 
@@ -76,7 +77,7 @@ export const TemporaryDrawer: React.FC<{
           onMouseEnter={() => setShowDelete(true)}
           onMouseLeave={() => setShowDelete(false)}
         >
-          {value}
+          {node.user_input ? <Box color="red">"{value}"</Box> : value}
           {show_delete && (
             <IconButton
               size="small"
@@ -112,7 +113,7 @@ export const TemporaryDrawer: React.FC<{
       )}
 
       <Drawer anchor={"bottom"} open={state} onClose={toggleDrawer(false)}>
-        <CustomButtons node={node} />
+        <CustomButtons node={node} setNode={setNode} />
         {list()}
       </Drawer>
     </div>
