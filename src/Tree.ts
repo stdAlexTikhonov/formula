@@ -6,7 +6,6 @@ export class TreeNode {
   right: TreeNode | null;
   args: TreeNode[];
   add_nodes: boolean;
-  user_input: string;
   static count: number = 0;
 
   constructor(index: number = 0) {
@@ -17,7 +16,6 @@ export class TreeNode {
     this.right = null;
     this.args = [];
     this.add_nodes = false;
-    this.user_input = "";
   }
 
   setValue(value: string) {

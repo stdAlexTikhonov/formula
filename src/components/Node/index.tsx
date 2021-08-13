@@ -44,9 +44,12 @@ export const Node: React.FC<Props> = ({ node }) => {
           <Node node={node.left} />
         )
       ) : (
-        <Leaf index={node.left ? node.left.index : 0} />
+        <Leaf
+          value={node.left ? node.left.value : ""}
+          index={node.left ? node.left.index : 0}
+        />
       )}
-      <TemporaryDrawer index={node.index} />
+      <TemporaryDrawer index={node.index} value={node.value} />
       {node.right && node.right.type !== "OPERAND" ? (
         node.right.type === "FUNCTION" ? (
           <Func node={node.right} />
@@ -54,7 +57,10 @@ export const Node: React.FC<Props> = ({ node }) => {
           <Node node={node.right} />
         )
       ) : (
-        <Leaf index={node.right ? node.right.index : 0} />
+        <Leaf
+          value={node.right ? node.right.value : ""}
+          index={node.right ? node.right.index : 0}
+        />
       )}
     </Box>
   );

@@ -15,7 +15,8 @@ import { CustomButtons } from "../CustomButtons";
 
 export const TemporaryDrawer: React.FC<{
   index: number;
-}> = ({ index }) => {
+  value?: string;
+}> = ({ index, value }) => {
   const dispatch = useAppDispatch();
   const [state, setState] = React.useState(false);
   const [show_delete, setShowDelete] = useState(false);
@@ -67,7 +68,7 @@ export const TemporaryDrawer: React.FC<{
 
   return (
     <div>
-      {node.value ? (
+      {value ? (
         <Button
           onClick={toggleDrawer(true)}
           disableRipple={true}
@@ -75,7 +76,7 @@ export const TemporaryDrawer: React.FC<{
           onMouseEnter={() => setShowDelete(true)}
           onMouseLeave={() => setShowDelete(false)}
         >
-          {node.value}
+          {value}
           {show_delete && (
             <IconButton
               size="small"
