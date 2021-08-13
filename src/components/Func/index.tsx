@@ -62,12 +62,13 @@ export const Func: React.FC<Props> = ({ node }) => {
               </>
             );
           })}
+        {node.add_nodes && show && node.args.length < 10 && (
+          <IconButton size="small" onClick={handleAddClick}>
+            <AddIcon style={{ fontSize: 15 }} />
+          </IconButton>
+        )}
       </Box>
-      {node.add_nodes && show && node.args.length < 10 && (
-        <IconButton size="small" onClick={handleAddClick}>
-          <AddIcon style={{ fontSize: 15 }} />
-        </IconButton>
-      )}
+
       {!state && <Typography className={classes.typography}>)</Typography>}
     </Box>
   );
