@@ -5,6 +5,7 @@ export class TreeNode {
   left: TreeNode | null;
   right: TreeNode | null;
   args: TreeNode[];
+  add_nodes: boolean;
   static count: number = 0;
 
   constructor(index: number = 0) {
@@ -14,6 +15,7 @@ export class TreeNode {
     this.left = null;
     this.right = null;
     this.args = [];
+    this.add_nodes = false;
   }
 
   setValue(value: string) {
@@ -52,7 +54,14 @@ class Tree {
       return (
         this._find(this.root.args[0], index) ||
         this._find(this.root.args[1], index) ||
-        this._find(this.root.args[2], index)
+        this._find(this.root.args[2], index) ||
+        this._find(this.root.args[3], index) ||
+        this._find(this.root.args[4], index) ||
+        this._find(this.root.args[5], index) ||
+        this._find(this.root.args[6], index) ||
+        this._find(this.root.args[7], index) ||
+        this._find(this.root.args[8], index) ||
+        this._find(this.root.args[9], index)
       );
     else return null;
   }
@@ -66,7 +75,14 @@ class Tree {
         return (
           this._find(node.args[0], index) ||
           this._find(node.args[1], index) ||
-          this._find(node.args[2], index)
+          this._find(node.args[2], index) ||
+          this._find(node.args[3], index) ||
+          this._find(node.args[4], index) ||
+          this._find(node.args[5], index) ||
+          this._find(node.args[6], index) ||
+          this._find(node.args[7], index) ||
+          this._find(node.args[8], index) ||
+          this._find(node.args[9], index)
         );
       else return null;
     }
@@ -86,7 +102,14 @@ class Tree {
       return (
         this._delete(this.root.args[0], index) ||
         this._delete(this.root.args[1], index) ||
-        this._delete(this.root.args[2], index)
+        this._delete(this.root.args[2], index) ||
+        this._delete(this.root.args[3], index) ||
+        this._delete(this.root.args[4], index) ||
+        this._delete(this.root.args[5], index) ||
+        this._delete(this.root.args[6], index) ||
+        this._delete(this.root.args[7], index) ||
+        this._delete(this.root.args[8], index) ||
+        this._delete(this.root.args[9], index)
       );
     } else
       return (
@@ -110,7 +133,14 @@ class Tree {
         return (
           this._delete(node.args[0], index) ||
           this._delete(node.args[1], index) ||
-          this._delete(node.args[2], index)
+          this._delete(node.args[2], index) ||
+          this._delete(node.args[3], index) ||
+          this._delete(node.args[4], index) ||
+          this._delete(node.args[5], index) ||
+          this._delete(node.args[6], index) ||
+          this._delete(node.args[7], index) ||
+          this._delete(node.args[8], index) ||
+          this._delete(node.args[9], index)
         );
       } else
         return (

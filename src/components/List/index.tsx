@@ -34,6 +34,7 @@ export default function SelectedListItem(props: any) {
         if (node.args.length !== DATA["AGRGUMENTS"][index]) {
           node.args = [];
           node.addArguments(DATA["AGRGUMENTS"][index]);
+          node.add_nodes = Boolean(DATA["ADD_NODES"][index]);
         }
       }
       dispatch(updateTree());

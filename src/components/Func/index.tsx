@@ -6,13 +6,19 @@ import { TreeNode } from "../../Tree";
 import { useState } from "react";
 import { useStyles } from "./styles";
 import { TemporaryDrawer } from "../Drawer";
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from "@material-ui/icons/Add";
+import { useAppDispatch } from "../../hooks";
+import { updateTree } from "../../store/codeSlice";
 
 type Props = {
   node: TreeNode;
 };
 
 export const Func: React.FC<Props> = ({ node }) => {
+  const dispatch = useAppDispatch();
   const [state, setState] = useState<boolean>(false);
+  const [show, setShow] = useState(false);
   const classes = useStyles({ state });
   const handleClick = () => setState(!state);
 
@@ -28,8 +34,18 @@ export const Func: React.FC<Props> = ({ node }) => {
     }
   };
 
+  const handleAddClick = () => {
+    node.addArguments(1);
+    dispatch(updateTree());
+  };
+
   return (
-    <Box display="flex" alignItems="center">
+    <Box
+      display="flex"
+      alignItems="center"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+    >
       <TemporaryDrawer index={node.index} value={node.value} />
       {!state && <Typography className={classes.typography}>(</Typography>}
       <Box className={classes.box}>
@@ -47,6 +63,11 @@ export const Func: React.FC<Props> = ({ node }) => {
             );
           })}
       </Box>
+      {node.add_nodes && show && node.args.length < 10 && (
+        <IconButton size="small" onClick={handleAddClick}>
+          <AddIcon style={{ fontSize: 15 }} />
+        </IconButton>
+      )}
       {!state && <Typography className={classes.typography}>)</Typography>}
     </Box>
   );
