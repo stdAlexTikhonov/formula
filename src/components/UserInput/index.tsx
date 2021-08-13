@@ -11,10 +11,10 @@ type Props = {
 export const UserInput: React.FC<Props> = ({ setNode }) => {
   const dispatch = useAppDispatch();
   const index = useAppSelector(getCurrentIndex);
-  const [value, setValue] = useState("");
+  const node = Tree.find(index);
+  const [value, setValue] = useState(node.user_input ? node.value : "");
 
   const handleClick = () => {
-    const node = Tree.find(index);
     dispatch(setCode(value));
     node.type = "OPERAND";
     node.left = null;
