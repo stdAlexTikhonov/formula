@@ -45,19 +45,23 @@ export const CustomPopover: React.FC<{ index: number; value: string }> = ({
   const [show, setShow] = React.useState<boolean>(false);
   const [show_delete, setShowDelete] = React.useState(false);
   const [type, setType] = React.useState<string | null>(null);
+  const [open, setOpen] = React.useState(false);
   const code = useAppSelector(getCode);
 
   useEffect(() => {
     setAnchorEl(null);
+    setOpen(false);
   }, [code]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
+    setOpen(true);
     dispatch(setCurrentIndex(index));
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+    setOpen(false);
   };
 
   const handleListItemClick = (_type: string) => {
@@ -105,7 +109,7 @@ export const CustomPopover: React.FC<{ index: number; value: string }> = ({
     dispatch(updateTree());
   };
 
-  const open = Boolean(anchorEl);
+  // const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
   return (
@@ -156,88 +160,90 @@ export const CustomPopover: React.FC<{ index: number; value: string }> = ({
           <AddIcon />
         </IconButton>
       )}
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        <Box position="relative" maxWidth="300px">
-          <UserInput setNode={setNode} />
-          <CustomButtons node={node} setNode={setNode} />
-          <List component="nav">
-            <ListItem
-              key={0}
-              button
-              onClick={() => handleListItemClick("variables")}
-            >
-              <ListItemText primary={"Переменные"} />
-              <ListItemIcon style={{ minWidth: 0 }}>
-                <ArrowForwardIosIcon />
-              </ListItemIcon>
-            </ListItem>
-
-            <ListItem
-              key={1}
-              button
-              onClick={() => handleListItemClick("measures")}
-            >
-              <ListItemText primary={"Меры"} />
-              <ListItemIcon style={{ minWidth: 0 }}>
-                <ArrowForwardIosIcon />
-              </ListItemIcon>
-            </ListItem>
-
-            <ListItem
-              key={2}
-              button
-              onClick={() => handleListItemClick("facts")}
-            >
-              <ListItemText primary={"Факты"} />
-              <ListItemIcon style={{ minWidth: 0 }}>
-                <ArrowForwardIosIcon />
-              </ListItemIcon>
-            </ListItem>
-
-            <ListItem
-              key={3}
-              button
-              onClick={() => handleListItemClick("functions")}
-            >
-              <ListItemText primary={"Функции"} />
-              <ListItemIcon style={{ minWidth: 0 }}>
-                <ArrowForwardIosIcon />
-              </ListItemIcon>
-            </ListItem>
-          </List>
-          {show && (
-            <Box
-              position="absolute"
-              left="0px"
-              top="0px"
-              bgcolor="white"
-              width="100%"
-              overflow="hidden"
-            >
-              <IconButton
-                onClick={handleCancel}
-                style={{ marginTop: 10, marginLeft: 10 }}
+      {open && (
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          <Box position="relative" maxWidth="300px">
+            <UserInput setNode={setNode} />
+            <CustomButtons node={node} setNode={setNode} />
+            <List component="nav">
+              <ListItem
+                key={0}
+                button
+                onClick={() => handleListItemClick("variables")}
               >
-                <ArrowBackIosIcon />
-              </IconButton>
-              {getComponent()}
-            </Box>
-          )}
-        </Box>
-      </Popover>
+                <ListItemText primary={"Переменные"} />
+                <ListItemIcon style={{ minWidth: 0 }}>
+                  <ArrowForwardIosIcon />
+                </ListItemIcon>
+              </ListItem>
+
+              <ListItem
+                key={1}
+                button
+                onClick={() => handleListItemClick("measures")}
+              >
+                <ListItemText primary={"Меры"} />
+                <ListItemIcon style={{ minWidth: 0 }}>
+                  <ArrowForwardIosIcon />
+                </ListItemIcon>
+              </ListItem>
+
+              <ListItem
+                key={2}
+                button
+                onClick={() => handleListItemClick("facts")}
+              >
+                <ListItemText primary={"Факты"} />
+                <ListItemIcon style={{ minWidth: 0 }}>
+                  <ArrowForwardIosIcon />
+                </ListItemIcon>
+              </ListItem>
+
+              <ListItem
+                key={3}
+                button
+                onClick={() => handleListItemClick("functions")}
+              >
+                <ListItemText primary={"Функции"} />
+                <ListItemIcon style={{ minWidth: 0 }}>
+                  <ArrowForwardIosIcon />
+                </ListItemIcon>
+              </ListItem>
+            </List>
+            {show && (
+              <Box
+                position="absolute"
+                left="0px"
+                top="0px"
+                bgcolor="white"
+                width="100%"
+                overflow="hidden"
+              >
+                <IconButton
+                  onClick={handleCancel}
+                  style={{ marginTop: 10, marginLeft: 10 }}
+                >
+                  <ArrowBackIosIcon />
+                </IconButton>
+                {getComponent()}
+              </Box>
+            )}
+          </Box>
+        </Popover>
+      )}
     </div>
   );
 };

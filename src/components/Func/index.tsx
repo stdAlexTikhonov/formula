@@ -5,11 +5,11 @@ import { Node } from "../Node";
 import { TreeNode } from "../../Tree";
 import { useState } from "react";
 import { useStyles } from "./styles";
-import { TemporaryDrawer } from "../Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import { useAppDispatch } from "../../hooks";
 import { updateTree } from "../../store/codeSlice";
+import { CustomPopover } from "../CustomPopover";
 
 type Props = {
   node: TreeNode;
@@ -46,7 +46,7 @@ export const Func: React.FC<Props> = ({ node }) => {
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
-      <TemporaryDrawer index={node.index} value={node.value} />
+      <CustomPopover index={node.index} value={node.value} />
       {!state && <Typography className={classes.typography}>(</Typography>}
       <Box className={classes.box}>
         {node.args &&

@@ -6,9 +6,9 @@ import { useAppSelector } from "../../hooks";
 import { getBrace } from "../../store/codeSlice";
 import { Func } from "../Func";
 import { useStyles } from "./styles";
-import { TemporaryDrawer } from "../Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
+import { CustomPopover } from "../CustomPopover";
 
 type Props = {
   node: TreeNode;
@@ -49,7 +49,7 @@ export const Node: React.FC<Props> = ({ node }) => {
           index={node.left ? node.left.index : 0}
         />
       )}
-      <TemporaryDrawer index={node.index} value={node.value} />
+      <CustomPopover index={node.index} value={node.value} />
       {node.right && node.right.type !== "OPERAND" ? (
         node.right.type === "FUNCTION" ? (
           <Func node={node.right} />

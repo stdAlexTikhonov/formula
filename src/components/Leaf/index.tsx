@@ -1,4 +1,4 @@
-import { TemporaryDrawer } from "../Drawer";
+import { CustomPopover } from "../CustomPopover";
 
 type Props = {
   value?: string;
@@ -6,5 +6,5 @@ type Props = {
 };
 
 export const Leaf: React.FC<Props> = ({ value = "", index }) => {
-  return <TemporaryDrawer index={index || 0} value={value} />;
+  return <CustomPopover index={index || 0} value={value} />;
 };
