@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
@@ -17,8 +17,8 @@ import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { CustomButtons } from "../CustomButtons";
 import Tree, { TreeNode } from "../../Tree";
-import { useAppDispatch } from "../../hooks";
-import { setCurrentIndex, updateTree } from "../../store/codeSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { setCurrentIndex, updateTree, getCode } from "../../store/codeSlice";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import AddIcon from "@material-ui/icons/Add";
 import { CustomIcon } from "../CustomIcon";
@@ -45,6 +45,11 @@ export const CustomPopover: React.FC<{ index: number; value: string }> = ({
   const [show, setShow] = React.useState<boolean>(false);
   const [show_delete, setShowDelete] = React.useState(false);
   const [type, setType] = React.useState<string | null>(null);
+  const code = useAppSelector(getCode);
+
+  useEffect(() => {
+    setAnchorEl(null);
+  }, [code]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
