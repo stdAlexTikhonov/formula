@@ -17,7 +17,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
   const dispatch = useAppDispatch();
 
   return (
-    <Box display="flex" justifyContent="center" flexWrap="wrap">
+    <Box display="flex" justifyContent="flex-start" flexWrap="wrap">
       {/* <UserInput setNode={setNode} /> */}
       <Button
         className={classes.btn}
