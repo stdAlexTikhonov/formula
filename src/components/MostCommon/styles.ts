@@ -9,7 +9,7 @@ export const useStyles = makeStyles(() => {
       width: "auto",
     },
     btn: {
-      margin: 5,
+      margin: 10,
     },
   };
 });

@@ -1,5 +1,5 @@
 import { TextField, Button, Box } from "@material-ui/core";
-import { useState } from "react";
+import React from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { updateTree, getCurrentIndex, setCode } from "../../store/codeSlice";
 import Tree from "../../Tree";
@@ -12,7 +12,7 @@ export const UserInput: React.FC<Props> = ({ setNode }) => {
   const dispatch = useAppDispatch();
   const index = useAppSelector(getCurrentIndex);
   const node = Tree.find(index);
-  const [value, setValue] = useState(node.user_input ? node.value : "");
+  const [value, setValue] = React.useState(node.user_input ? node.value : "");
 
   const handleClick = () => {
     dispatch(setCode(value));
@@ -26,9 +26,9 @@ export const UserInput: React.FC<Props> = ({ setNode }) => {
   };
 
   return (
-    <Box display="flex">
+    <Box display="flex" padding={1}>
       <TextField
-        style={{ width: 200, alignSelf: "center" }}
+        style={{ alignSelf: "center", flexGrow: 1 }}
         placeholder="Пользовательский ввод"
         value={value}
         onChange={(e) => setValue(e.target.value)}

@@ -17,8 +17,8 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
   const dispatch = useAppDispatch();
 
   return (
-    <Box display="flex" justifyContent="center">
-      <UserInput setNode={setNode} />
+    <Box display="flex" justifyContent="center" flexWrap="wrap">
+      {/* <UserInput setNode={setNode} /> */}
       <Button
         className={classes.btn}
         onClick={() => {
@@ -33,6 +33,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
           dispatch(updateTree());
         }}
         variant="outlined"
+        size="small"
       >
         <CustomIcon value="+" />
       </Button>
