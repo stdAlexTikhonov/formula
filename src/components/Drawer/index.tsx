@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { Wrapper } from "../Wrapper";
 import { useAppDispatch } from "../../hooks";
-import { setCurrentIndex, updateTree } from "../../store/codeSlice";
+import { setCurrentIndex, updateTree, getCode } from "../../store/codeSlice";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import Tree from "../../Tree";
@@ -13,6 +13,7 @@ import ClearIcon from "@material-ui/icons/Clear";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import { CustomButtons } from "../CustomButtons";
 import { CustomIcon } from "../CustomIcon";
+import { useAppSelector } from "../../hooks";
 
 export const TemporaryDrawer: React.FC<{
   index: number;
@@ -22,6 +23,11 @@ export const TemporaryDrawer: React.FC<{
   const [state, setState] = React.useState(false);
   const [show_delete, setShowDelete] = React.useState(false);
   const [node, setNode] = React.useState(Tree.find(index));
+  const code = useAppSelector(getCode);
+
+  useEffect(() => {
+    setState(false);
+  }, [code]);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
