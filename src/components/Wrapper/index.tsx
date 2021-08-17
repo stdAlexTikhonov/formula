@@ -4,7 +4,8 @@ import Box from "@material-ui/core/Box";
 import { CustomList } from "../List";
 import { mapping_list_types } from "./mapping";
 import { useStyles } from "./styles";
-import { DATA } from "../../data";
+import { getData } from "../../store/codeSlice";
+import { useAppSelector } from "../../hooks";
 
 type Item = {
   name: string;
@@ -13,15 +14,17 @@ type Item = {
 };
 
 export const Wrapper: React.FC<{ type: string }> = ({ type }) => {
+  const data = useAppSelector(getData);
+
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState<Item[]>(
-    DATA[type.toUpperCase() as keyof typeof DATA]
+    data[type.toUpperCase() as keyof typeof data]
   );
   const classes = useStyles();
 
   useEffect(() => {
     setFiltered(() =>
-      DATA[type.toUpperCase() as keyof typeof DATA].filter((item) =>
+      data[type.toUpperCase() as keyof typeof data].filter((item) =>
         item.name.includes(search)
       )
     );

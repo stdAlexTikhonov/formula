@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Popover from "@material-ui/core/Popover";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { UserInput } from "../UserInput";
@@ -22,19 +20,10 @@ import AddIcon from "@material-ui/icons/Add";
 import { CustomIcon } from "../CustomIcon";
 import ClearIcon from "@material-ui/icons/Clear";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    typography: {
-      padding: theme.spacing(2),
-    },
-  })
-);
-
 export const CustomPopover: React.FC<{ index: number; value: string }> = ({
   index,
   value,
 }) => {
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
