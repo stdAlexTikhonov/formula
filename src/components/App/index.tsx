@@ -1,16 +1,10 @@
-import { TextInput } from "../TextInput";
-import React from "react";
-import Button from "@material-ui/core/Button";
 import { VisualBuilder } from "../VisualBuilder";
+import Box from "@material-ui/core/Box";
 
 export const App = () => {
-  const [view, setView] = React.useState(false);
-
-  const handleClick = () => false;
   return (
-    <>
-      <Button onClick={handleClick}>{view ? "Text" : "Visual"}</Button>
-      {view ? <TextInput /> : <VisualBuilder />}
-    </>
+    <Box display="flex" height="100vh" width="100%">
+      <VisualBuilder />
+    </Box>
   );
 };
