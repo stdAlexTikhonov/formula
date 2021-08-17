@@ -13,6 +13,7 @@ import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import { CustomButtons } from "../CustomButtons";
 import { CustomIcon } from "../CustomIcon";
 import { useAppSelector } from "../../hooks";
+import { UserInput } from "../UserInput";
 
 export const TemporaryDrawer: React.FC<{
   index: number;
@@ -83,7 +84,7 @@ export const TemporaryDrawer: React.FC<{
           onMouseEnter={() => setShowDelete(true)}
           onMouseLeave={() => setShowDelete(false)}
         >
-          {node.user_input ? (
+          {node.user_input && isNaN(parseInt(value)) ? (
             <Box color="red">"{value}"</Box>
           ) : (
             <CustomIcon value={value} />
@@ -123,6 +124,7 @@ export const TemporaryDrawer: React.FC<{
       )}
 
       <Drawer anchor={"bottom"} open={state} onClose={toggleDrawer(false)}>
+        <UserInput setNode={setNode} />
         <CustomButtons node={node} setNode={setNode} />
         {list()}
       </Drawer>

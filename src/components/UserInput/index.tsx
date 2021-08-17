@@ -26,7 +26,7 @@ export const UserInput: React.FC<Props> = ({ setNode }) => {
   };
 
   return (
-    <Box display="flex" padding={1}>
+    <Box display="flex" padding={1} maxWidth={"300px"}>
       <TextField
         style={{ alignSelf: "center", flexGrow: 1 }}
         placeholder="Пользовательский ввод"
