@@ -8,9 +8,19 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { setCode, getCurrentIndex, updateTree } from "../../store/codeSlice";
 import Tree from "../../Tree";
 import { useStyles } from "./styles";
-import { DATA } from "../../data";
 
-export default function SelectedListItem(props: any) {
+type Item = {
+  name: string;
+  args_quantity?: number;
+  add_nodes?: boolean;
+};
+
+type Props = {
+  type: string;
+  items: Item[];
+};
+
+export const CustomList: React.FC<Props> = ({ items, type }) => {
   const dispatch = useAppDispatch();
   const index_in_tree = useAppSelector(getCurrentIndex);
   const classes = useStyles();
@@ -26,16 +36,16 @@ export default function SelectedListItem(props: any) {
     const node = Tree.find(index_in_tree);
     if (node) {
       node.value = value;
-      node.type = props.type === "functions" ? "FUNCTION" : "OPERAND";
+      node.type = type === "functions" ? "FUNCTION" : "OPERAND";
       node.left = null;
       node.right = null;
       node.user_input = false;
 
-      if (props.type === "functions") {
-        if (node.args.length !== DATA["AGRGUMENTS"][index]) {
+      if (type === "functions") {
+        if (node.args.length !== items[index].args_quantity) {
           node.args = [];
-          node.addArguments(DATA["AGRGUMENTS"][index]);
-          node.add_nodes = Boolean(DATA["ADD_NODES"][index]);
+          node.addArguments(items[index].args_quantity);
+          node.add_nodes = items[index].add_nodes;
         }
       }
       dispatch(updateTree());
@@ -45,20 +55,20 @@ export default function SelectedListItem(props: any) {
   return (
     <div className={classes.root}>
       <List component="nav">
-        {props.items.map((item: string, ind: number) => (
+        {items.map((item: Item, ind: number) => (
           <ListItem
             key={ind}
             button
             selected={selectedIndex === ind}
-            onClick={(event) => handleListItemClick(event, ind, item)}
+            onClick={(event) => handleListItemClick(event, ind, item.name)}
           >
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary={item} />
+            <ListItemText primary={item.name} />
           </ListItem>
         ))}
       </List>
     </div>
   );
-}
+};

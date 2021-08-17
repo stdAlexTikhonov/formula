@@ -8,7 +8,6 @@ import { setCurrentIndex, updateTree, getCode } from "../../store/codeSlice";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import Tree from "../../Tree";
-import { DATA } from "../../data";
 import ClearIcon from "@material-ui/icons/Clear";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import { CustomButtons } from "../CustomButtons";
@@ -67,10 +66,10 @@ export const TemporaryDrawer: React.FC<{
 
   const list = () => (
     <Box display="flex">
-      <Wrapper items={DATA["FUNCTIONS"]} type="functions" />
-      <Wrapper items={DATA["FACTS"]} type="facts" />
-      <Wrapper items={DATA["MEASURES"]} type="measures" />
-      <Wrapper items={DATA["VARIABLES"]} type="variables" />
+      <Wrapper type="functions" />
+      <Wrapper type="facts" />
+      <Wrapper type="measures" />
+      <Wrapper type="variables" />
     </Box>
   );
 

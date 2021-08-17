@@ -11,7 +11,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Wrapper } from "../Wrapper";
-import { DATA } from "../../data";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { CustomButtons } from "../CustomButtons";
@@ -76,13 +75,13 @@ export const CustomPopover: React.FC<{ index: number; value: string }> = ({
   const getComponent = () => {
     switch (type) {
       case "functions":
-        return <Wrapper items={DATA["FUNCTIONS"]} type="functions" />;
+        return <Wrapper type="functions" />;
       case "facts":
-        return <Wrapper items={DATA["FACTS"]} type="facts" />;
+        return <Wrapper type="facts" />;
       case "measures":
-        return <Wrapper items={DATA["MEASURES"]} type="measures" />;
+        return <Wrapper type="measures" />;
       case "variables":
-        return <Wrapper items={DATA["VARIABLES"]} type="variables" />;
+        return <Wrapper type="variables" />;
     }
   };
 
