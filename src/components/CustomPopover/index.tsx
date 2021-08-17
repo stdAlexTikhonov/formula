@@ -122,7 +122,7 @@ export const CustomPopover: React.FC<{ index: number; value: string }> = ({
           onMouseEnter={() => setShowDelete(true)}
           onMouseLeave={() => setShowDelete(false)}
         >
-          {node.user_input ? (
+          {node.user_input && isNaN(parseInt(value)) ? (
             <Box color="red">"{value}"</Box>
           ) : (
             <CustomIcon value={value} />
