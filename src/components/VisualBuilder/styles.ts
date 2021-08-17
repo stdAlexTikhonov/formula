@@ -8,5 +8,6 @@ export const useStyles = makeStyles(() => ({
     margin: "auto",
     display: "flex",
     overflow: "auto",
+    position: "relative",
   },
 }));

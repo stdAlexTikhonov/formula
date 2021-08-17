@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import { useAppDispatch } from "../../hooks";
 import { updateTree } from "../../store/codeSlice";
-import { CustomPopover } from "../CustomPopover";
+import { Switcher } from "../Switcher";
 
 type Props = {
   node: TreeNode;
@@ -46,7 +46,7 @@ export const Func: React.FC<Props> = ({ node }) => {
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
-      <CustomPopover index={node.index} value={node.value} />
+      <Switcher index={node.index} value={node.value} />
       {!state && <Typography className={classes.typography}>(</Typography>}
       <Box className={classes.box}>
         {node.args &&

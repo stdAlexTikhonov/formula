@@ -15,6 +15,7 @@ interface CodeSlice {
   data: {
     [key: string]: Item[];
   };
+  drawer: boolean;
 }
 
 // Define the initial state using that type
@@ -24,6 +25,7 @@ const initialState: CodeSlice = {
   brace: false,
   update_tree: false,
   data: {},
+  drawer: false,
 };
 
 export const codeSlice = createSlice({
@@ -45,6 +47,9 @@ export const codeSlice = createSlice({
     updateTree: (state) => {
       state.update_tree = !state.update_tree;
     },
+    toggleDrawer: (state) => {
+      state.drawer = !state.drawer;
+    },
     // incrementByAmount: (state, action: PayloadAction<number>) => {
     //   state.value += action.payload;
     // },
@@ -52,8 +57,14 @@ export const codeSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setCode, setCurrentIndex, toggleBrace, updateTree, setData } =
-  codeSlice.actions;
+export const {
+  setCode,
+  setCurrentIndex,
+  toggleBrace,
+  updateTree,
+  setData,
+  toggleDrawer,
+} = codeSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const getCode = (state: RootState) => state.code.value;
@@ -65,5 +76,7 @@ export const getBrace = (state: RootState) => state.code.brace;
 export const getUpdateTree = (state: RootState) => state.code.update_tree;
 
 export const getData = (state: RootState) => state.code.data;
+
+export const getDrawer = (state: RootState) => state.code.drawer;
 
 export default codeSlice.reducer;

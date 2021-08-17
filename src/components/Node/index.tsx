@@ -8,7 +8,7 @@ import { Func } from "../Func";
 import { useStyles } from "./styles";
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
-import { CustomPopover } from "../CustomPopover";
+import { Switcher } from "../Switcher";
 
 type Props = {
   node: TreeNode;
@@ -49,7 +49,7 @@ export const Node: React.FC<Props> = ({ node }) => {
           index={node.left ? node.left.index : 0}
         />
       )}
-      <CustomPopover index={node.index} value={node.value} />
+      <Switcher index={node.index} value={node.value} />
       {node.right && node.right.type !== "OPERAND" ? (
         node.right.type === "FUNCTION" ? (
           <Func node={node.right} />

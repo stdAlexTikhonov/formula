@@ -1,4 +1,4 @@
-import { CustomPopover } from "../CustomPopover";
+import { Switcher } from "../Switcher";
 
 type Props = {
   value?: string;
@@ -6,5 +6,5 @@ type Props = {
 };
 
 export const Leaf: React.FC<Props> = ({ value = "", index }) => {
-  return <CustomPopover index={index || 0} value={value} />;
+  return <Switcher index={index || 0} value={value} />;
 };
