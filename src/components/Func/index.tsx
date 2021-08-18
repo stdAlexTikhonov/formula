@@ -25,10 +25,10 @@ export const Func: React.FC<Props> = ({ node }) => {
   const getComponent = (node: TreeNode) => {
     switch (node.type) {
       case "FUNCTION":
-        return <Func node={node} />;
+        return <Func node={node} key={node.value} />;
 
       case "OPERATOR":
-        return <Node node={node} />;
+        return <Node node={node} key={node.value} />;
       default:
         return <Leaf value={node.value} index={node.index} />;
     }

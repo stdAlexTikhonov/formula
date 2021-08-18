@@ -161,7 +161,12 @@ class Tree {
     const node = this.find(index);
     const child = node.left;
     if (node) {
-      if (node.type !== "OPERATOR" || child.type !== "OPERATOR") return false;
+      if (
+        node.type !== "OPERATOR" ||
+        child.type !== "OPERATOR" ||
+        child.value === "in"
+      )
+        return false;
       else {
         [node.value, child.value] = [child.value, node.value];
       }
@@ -173,7 +178,12 @@ class Tree {
     const node = this.find(index);
     const child = node.right;
     if (node) {
-      if (node.type !== "OPERATOR" || child.type !== "OPERATOR") return false;
+      if (
+        node.type !== "OPERATOR" ||
+        child.type !== "OPERATOR" ||
+        child.value === "in"
+      )
+        return false;
       else {
         [node.value, child.value] = [child.value, node.value];
       }
