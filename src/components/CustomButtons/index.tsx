@@ -3,8 +3,7 @@ import { TreeNode } from "../../Tree";
 import Button from "@material-ui/core/Button";
 import { useStyles } from "./styles";
 import { useAppDispatch } from "../../hooks";
-import { setCode, toggleBrace, updateTree } from "../../store/codeSlice";
-import { UserInput } from "../UserInput";
+import { setCode, updateTree } from "../../store/codeSlice";
 import { CustomIcon } from "../CustomIcon";
 
 type Props = {
@@ -18,7 +17,6 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
 
   return (
     <Box display="flex" justifyContent="flex-start" flexWrap="wrap">
-      {/* <UserInput setNode={setNode} /> */}
       <Button
         className={classes.btn}
         onClick={() => {
@@ -122,22 +120,7 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
       >
         AND
       </Button>
-      <Button
-        className={classes.btn}
-        onClick={() => {
-          dispatch(setCode("NOT"));
-          if (node) {
-            node.value = "NOT";
-            node.type = "FUNCTION";
-            node.user_input = false;
-            if (!node.left) node.addArguments(1);
-          }
-          dispatch(updateTree());
-        }}
-        variant="outlined"
-      >
-        NOT
-      </Button>
+
       <Button
         className={classes.btn}
         onClick={() => {
@@ -243,12 +226,53 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
       <Button
         className={classes.btn}
         onClick={() => {
-          dispatch(toggleBrace());
+          dispatch(setCode("like"));
+          if (node) {
+            node.value = "like";
+            node.type = "OPERATOR";
+            node.user_input = false;
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
+          }
           dispatch(updateTree());
         }}
         variant="outlined"
       >
-        ()
+        <CustomIcon value="like" />
+      </Button>
+      <Button
+        className={classes.btn}
+        onClick={() => {
+          dispatch(setCode("ilike"));
+          if (node) {
+            node.value = "ilike";
+            node.type = "OPERATOR";
+            node.user_input = false;
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
+          }
+          dispatch(updateTree());
+        }}
+        variant="outlined"
+      >
+        <CustomIcon value="ilike" />
+      </Button>
+      <Button
+        className={classes.btn}
+        onClick={() => {
+          dispatch(setCode("between"));
+          if (node) {
+            node.value = "between";
+            node.type = "OPERATOR";
+            node.user_input = false;
+            if (!node.left) node.setLeft();
+            if (!node.right) node.setRight();
+          }
+          dispatch(updateTree());
+        }}
+        variant="outlined"
+      >
+        <CustomIcon value="between" />
       </Button>
     </Box>
   );

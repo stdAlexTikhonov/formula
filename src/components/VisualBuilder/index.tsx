@@ -5,7 +5,11 @@ import { Func } from "../Func";
 import Tree, { TreeNode } from "../../Tree";
 import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../hooks";
-import { getUpdateTree, toggleDrawer } from "../../store/codeSlice";
+import {
+  getUpdateTree,
+  toggleDrawer,
+  toggleBrace,
+} from "../../store/codeSlice";
 import { useStyles } from "./styles";
 import IconButton from "@material-ui/core/IconButton";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -15,7 +19,9 @@ export const VisualBuilder = () => {
   const update_tree = useAppSelector(getUpdateTree);
   const classes = useStyles();
 
-  const handleClick = () => dispatch(toggleDrawer());
+  const handleDrawer = () => dispatch(toggleDrawer());
+
+  const handleBrace = () => dispatch(toggleBrace());
 
   useEffect(() => {
     traversTree(Tree.root);
@@ -30,12 +36,13 @@ export const VisualBuilder = () => {
 
   return (
     <Box className={classes.box}>
-      <IconButton
-        style={{ position: "absolute", right: 0 }}
-        onClick={handleClick}
-      >
-        <SettingsIcon />
-      </IconButton>
+      <Box position="absolute" right="0" display="flex" flexDirection="column">
+        <IconButton onClick={handleDrawer}>
+          <SettingsIcon />
+        </IconButton>
+        <IconButton onClick={handleBrace}>()</IconButton>
+      </Box>
+
       <Box margin="auto">{traversTree(Tree.root)}</Box>
     </Box>
   );
