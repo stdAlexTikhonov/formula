@@ -9,6 +9,7 @@ import { useStyles } from "./styles";
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import { Switcher } from "../Switcher";
+import { ComponentSelector } from "./ComponentSelector";
 
 type Props = {
   node: TreeNode;
@@ -37,31 +38,9 @@ export const Node: React.FC<Props> = ({ node }) => {
           <AutorenewIcon className={classes.icon} />
         </IconButton>
       )}
-      {node.left && node.left.type !== "OPERAND" ? (
-        node.left.type === "FUNCTION" ? (
-          <Func node={node.left} />
-        ) : (
-          <Node node={node.left} />
-        )
-      ) : (
-        <Leaf
-          value={node.left ? node.left.value : ""}
-          index={node.left ? node.left.index : 0}
-        />
-      )}
+      {node.left && <ComponentSelector node={node.left} />}
       <Switcher index={node.index} value={node.value} />
-      {node.right && node.right.type !== "OPERAND" ? (
-        node.right.type === "FUNCTION" ? (
-          <Func node={node.right} />
-        ) : (
-          <Node node={node.right} />
-        )
-      ) : (
-        <Leaf
-          value={node.right ? node.right.value : ""}
-          index={node.right ? node.right.index : 0}
-        />
-      )}
+      {node.right && <ComponentSelector node={node.right} />}
     </Box>
   );
 };

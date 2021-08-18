@@ -1,5 +1,5 @@
 export class TreeNode {
-  type: "OPERATOR" | "OPERAND" | "FUNCTION";
+  type: string;
   index: number;
   value: string;
   left: TreeNode | null;
@@ -9,9 +9,9 @@ export class TreeNode {
   user_input: boolean;
   static count: number = 0;
 
-  constructor(index: number = 0) {
+  constructor(index: number = 0, type: string = "OPERAND") {
     this.index = index;
-    this.type = "OPERAND";
+    this.type = type;
     this.value = "";
     this.left = null;
     this.right = null;
@@ -40,6 +40,12 @@ export class TreeNode {
   setRight() {
     TreeNode.count++;
     this.right = new TreeNode(TreeNode.count);
+  }
+
+  setArgs() {
+    TreeNode.count++;
+    this.right = new TreeNode(TreeNode.count, "ARGS");
+    this.right.add_nodes = true;
   }
 }
 class Tree {
@@ -73,7 +79,7 @@ class Tree {
       if (node.index === index) return node;
       else if (node.type === "OPERAND" || node.type === "OPERATOR")
         return this._find(node.left, index) || this._find(node.right, index);
-      else if (node.type === "FUNCTION")
+      else if (node.type === "FUNCTION" || node.type === "ARGS")
         return (
           this._find(node.args[0], index) ||
           this._find(node.args[1], index) ||
@@ -127,7 +133,7 @@ class Tree {
         node.left = new TreeNode(node.left.index);
       else if (node.right && node.right.index === index)
         node.right = new TreeNode(node.right.index);
-      else if (node.type === "FUNCTION") {
+      else if (node.type === "FUNCTION" || node.type === "ARGS") {
         for (let i = 0; i < node.args.length; i++) {
           if (node.args[i].index === index)
             node.args[i] = new TreeNode(node.args[i].index);

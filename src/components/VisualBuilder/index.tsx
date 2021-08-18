@@ -2,6 +2,7 @@ import Box from "@material-ui/core/Box";
 import { Leaf } from "../Leaf";
 import { Node } from "../Node";
 import { Func } from "../Func";
+import { TestNode } from "../Args";
 import Tree, { TreeNode } from "../../Tree";
 import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../hooks";

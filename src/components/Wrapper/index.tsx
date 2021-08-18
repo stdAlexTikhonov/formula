@@ -11,6 +11,7 @@ type Item = {
   name: string;
   args_quantity?: number;
   add_nodes?: boolean;
+  type?: string;
 };
 
 export const Wrapper: React.FC<{ type: string }> = ({ type }) => {

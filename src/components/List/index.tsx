@@ -13,6 +13,7 @@ type Item = {
   name: string;
   args_quantity?: number;
   add_nodes?: boolean;
+  type?: string;
 };
 
 type Props = {
@@ -34,14 +35,21 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
     setSelectedIndex(index);
     dispatch(setCode(value));
     const node = Tree.find(index_in_tree);
+
     if (node) {
       node.value = value;
-      node.type = type === "functions" ? "FUNCTION" : "OPERAND";
+      node.type =
+        items[index].type || (type === "functions" ? "FUNCTION" : "OPERAND");
       node.left = null;
       node.right = null;
       node.user_input = false;
 
-      if (type === "functions") {
+      if (node.type === "OPERATOR") {
+        node.setLeft();
+        node.setArgs();
+      }
+
+      if (type === "functions" && items[index].type !== "OPERATOR") {
         if (node.args.length !== items[index].args_quantity) {
           node.args = [];
           node.addArguments(items[index].args_quantity);
