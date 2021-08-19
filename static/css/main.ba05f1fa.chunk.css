@@ -12,6 +12,7 @@ code {
 }
 @font-face {
   font-family: "MathIcon";
-  src: url(./static/media/MathIcon.3f77eb3c.woff) format("woff");
+  src: url(https://stdalextikhonov.github.io/formula/static/media/MathIcon.3f77eb3c.woff)
+    format("woff");
 }
 /*# sourceMappingURL=main.ba05f1fa.chunk.css.map */
