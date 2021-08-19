@@ -14,7 +14,7 @@ import { CustomButtons } from "../CustomButtons";
 import Tree, { TreeNode } from "../../Tree";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { setCurrentIndex, getCode } from "../../store/codeSlice";
-import { CustomButton } from "../CustomButton";
+import { Trigger } from "../Trigger";
 
 export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
@@ -66,7 +66,7 @@ export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
 
   return (
     <div>
-      <CustomButton node={node} onClick={handleClick} />
+      <Trigger node={node} onClick={handleClick} />
       {open && (
         <Popover
           id={id}

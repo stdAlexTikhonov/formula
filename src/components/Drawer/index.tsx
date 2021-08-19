@@ -8,7 +8,7 @@ import Tree from "../../Tree";
 import { CustomButtons } from "../CustomButtons";
 import { useAppSelector } from "../../hooks";
 import { UserInput } from "../UserInput";
-import { CustomButton } from "../CustomButton";
+import { Trigger } from "../Trigger";
 
 export const TemporaryDrawer: React.FC<{
   index: number;
@@ -45,7 +45,7 @@ export const TemporaryDrawer: React.FC<{
 
   return (
     <div>
-      <CustomButton node={node} onClick={toggleDrawer(true)} />
+      <Trigger node={node} onClick={toggleDrawer(true)} />
       <Drawer anchor={"bottom"} open={state} onClose={toggleDrawer(false)}>
         <UserInput setNode={setNode} />
         <CustomButtons node={node} setNode={setNode} />

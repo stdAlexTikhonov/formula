@@ -15,7 +15,7 @@ type Props = {
   node: TreeNode;
 };
 
-export const CustomButton: React.FC<Props> = ({ onClick, node }) => {
+export const Trigger: React.FC<Props> = ({ onClick, node }) => {
   const dispatch = useAppDispatch();
   const [show_delete, setShowDelete] = useState(false);
 
