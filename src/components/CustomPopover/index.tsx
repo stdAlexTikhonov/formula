@@ -65,10 +65,6 @@ export const CustomPopover: React.FC<{ index: number; value: string }> = ({
     switch (type) {
       case "functions":
         return <Wrapper type="functions" />;
-      case "facts":
-        return <Wrapper type="facts" />;
-      case "measures":
-        return <Wrapper type="measures" />;
       case "variables":
         return <Wrapper type="variables" />;
     }
@@ -178,28 +174,6 @@ export const CustomPopover: React.FC<{ index: number; value: string }> = ({
               </ListItem>
 
               <ListItem
-                key={1}
-                button
-                onClick={() => handleListItemClick("measures")}
-              >
-                <ListItemText primary={"Меры"} />
-                <ListItemIcon style={{ minWidth: 0 }}>
-                  <ArrowForwardIosIcon />
-                </ListItemIcon>
-              </ListItem>
-
-              <ListItem
-                key={2}
-                button
-                onClick={() => handleListItemClick("facts")}
-              >
-                <ListItemText primary={"Факты"} />
-                <ListItemIcon style={{ minWidth: 0 }}>
-                  <ArrowForwardIosIcon />
-                </ListItemIcon>
-              </ListItem>
-
-              <ListItem
                 key={3}
                 button
                 onClick={() => handleListItemClick("functions")}
@@ -215,13 +189,20 @@ export const CustomPopover: React.FC<{ index: number; value: string }> = ({
                 position="absolute"
                 left="0px"
                 top="0px"
-                bgcolor="white"
                 width="100%"
                 overflow="hidden"
+                display="flex"
+                flexDirection="column"
+                height="100%"
+                bgcolor="white"
               >
                 <IconButton
                   onClick={handleCancel}
-                  style={{ marginTop: 10, marginLeft: 10 }}
+                  style={{
+                    marginTop: 10,
+                    marginLeft: 10,
+                    alignSelf: "flex-start",
+                  }}
                 >
                   <ArrowBackIosIcon />
                 </IconButton>

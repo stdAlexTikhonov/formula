@@ -68,8 +68,6 @@ export const TemporaryDrawer: React.FC<{
   const list = () => (
     <Box display="flex">
       <Wrapper type="functions" />
-      <Wrapper type="facts" />
-      <Wrapper type="measures" />
       <Wrapper type="variables" />
     </Box>
   );

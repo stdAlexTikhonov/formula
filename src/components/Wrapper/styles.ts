@@ -9,10 +9,12 @@ export const useStyles = makeStyles(() => ({
   wrapper: {
     width: "100%",
     overflow: "hidden",
-    background: "white",
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
   },
   box: {
-    maxHeight: 300,
+    flexGrow: 1,
     overflow: "auto",
     width: "100%",
   },
