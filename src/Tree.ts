@@ -42,10 +42,11 @@ export class TreeNode {
     this.right = new TreeNode(TreeNode.count);
   }
 
-  setArgs() {
+  setArgs(arbitrary_args: boolean, args_len: number) {
     TreeNode.count++;
     this.right = new TreeNode(TreeNode.count, "ARGS");
-    this.right.arbitrary_args = true;
+    this.right.arbitrary_args = arbitrary_args;
+    if (args_len) this.right.addArguments(args_len);
   }
 }
 class Tree {

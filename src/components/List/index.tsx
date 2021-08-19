@@ -11,9 +11,9 @@ import { useStyles } from "./styles";
 
 type Item = {
   name: string;
-  args_quantity?: number;
   arbitrary_args?: boolean;
   is_operator?: boolean;
+  arguments_types?: string[];
 };
 
 type Props = {
@@ -47,15 +47,18 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
       node.right = null;
       node.user_input = false;
 
-      if (node.type === "OPERATOR") {
+      if (items[index].is_operator) {
         node.setLeft();
-        node.setArgs();
+        node.setArgs(
+          items[index].arbitrary_args,
+          items[index].arguments_types!.length
+        );
       }
 
       if (type === "functions" && !items[index].is_operator) {
-        if (node.args.length !== items[index].args_quantity) {
+        if (node.args.length !== items[index].arguments_types!.length) {
           node.args = [];
-          node.addArguments(items[index].args_quantity);
+          node.addArguments(items[index].arguments_types!.length);
           node.arbitrary_args = items[index].arbitrary_args;
         }
       }

@@ -9,9 +9,9 @@ import { useAppSelector } from "../../hooks";
 
 type Item = {
   name: string;
-  args_quantity?: number;
   arbitrary_args?: boolean;
   type?: string;
+  arguments_types?: string[];
 };
 
 export const Wrapper: React.FC<{ type: string }> = ({ type }) => {
