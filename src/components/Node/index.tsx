@@ -1,10 +1,8 @@
 import { Box } from "@material-ui/core";
-import { Leaf } from "../Leaf";
 import { useState } from "react";
 import { TreeNode } from "../../Tree";
 import { useAppSelector } from "../../hooks";
 import { getBrace } from "../../store/codeSlice";
-import { Func } from "../Func";
 import { useStyles } from "./styles";
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
