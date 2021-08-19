@@ -47,21 +47,20 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
       node.right = null;
       node.user_input = false;
 
-      if (items[index].is_operator) {
-        node.setLeft();
-        node.setArgs(
-          items[index].arbitrary_args,
-          items[index].arguments_types!.length
-        );
-      }
-
-      if (type === "functions" && !items[index].is_operator) {
-        if (node.args.length !== items[index].arguments_types!.length) {
+      if (type === "functions") {
+        if (items[index].is_operator) {
+          node.setLeft();
+          node.setArgs(
+            items[index].arbitrary_args,
+            items[index].arguments_types!.length
+          );
+        } else {
           node.args = [];
           node.addArguments(items[index].arguments_types!.length);
           node.arbitrary_args = items[index].arbitrary_args;
         }
       }
+
       dispatch(updateTree());
     }
   };
