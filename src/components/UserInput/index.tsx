@@ -28,6 +28,7 @@ export const UserInput: React.FC<Props> = ({ setNode }) => {
   return (
     <Box display="flex" padding={1} maxWidth={"300px"}>
       <TextField
+        autoFocus
         style={{ alignSelf: "center", flexGrow: 1 }}
         placeholder="Пользовательский ввод"
         value={value}
