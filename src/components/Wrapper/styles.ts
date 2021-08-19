@@ -17,5 +17,6 @@ export const useStyles = makeStyles(() => ({
     flexGrow: 1,
     overflow: "auto",
     width: "100%",
+    maxHeight: 300,
   },
 }));
