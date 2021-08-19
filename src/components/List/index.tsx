@@ -13,7 +13,7 @@ type Item = {
   name: string;
   args_quantity?: number;
   arbitrary_args?: boolean;
-  type?: string;
+  is_operator?: boolean;
 };
 
 type Props = {
@@ -38,8 +38,11 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
 
     if (node) {
       node.value = value;
-      node.type =
-        items[index].type || (type === "functions" ? "FUNCTION" : "OPERAND");
+      node.type = items[index].is_operator
+        ? "OPERATOR"
+        : type === "functions"
+        ? "FUNCTION"
+        : "OPERAND";
       node.left = null;
       node.right = null;
       node.user_input = false;
@@ -49,7 +52,7 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
         node.setArgs();
       }
 
-      if (type === "functions" && items[index].type !== "OPERATOR") {
+      if (type === "functions" && !items[index].is_operator) {
         if (node.args.length !== items[index].args_quantity) {
           node.args = [];
           node.addArguments(items[index].args_quantity);
