@@ -81,6 +81,11 @@ export const DATA = {
       return_type: "boolean",
       arguments_types: ["string", "string"],
     },
+    {
+      name: "contains",
+      return_type: "boolean",
+      arguments_types: ["string", "string"],
+    },
   ],
   FUNCTIONS: [
     { name: "curent_date", return_type: "datetime", arguments_types: [] },
@@ -135,12 +140,6 @@ export const DATA = {
       name: "endwith",
       return_type: "boolean",
       arguments_types: ["string"],
-    },
-    {
-      name: "contains",
-      is_operator: true,
-      return_type: "boolean",
-      arguments_types: ["any"],
     },
     {
       name: "not",
