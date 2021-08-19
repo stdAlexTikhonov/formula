@@ -49,7 +49,7 @@ export const Func: React.FC<Props> = ({ node }) => {
               </>
             );
           })}
-        {node.add_nodes && show && node.args.length < 10 && (
+        {node.arbitrary_args && show && node.args.length < 10 && (
           <IconButton size="small" onClick={handleAddClick}>
             <AddIcon style={{ fontSize: 15 }} />
           </IconButton>

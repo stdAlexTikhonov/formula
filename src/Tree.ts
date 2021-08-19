@@ -5,7 +5,7 @@ export class TreeNode {
   left: TreeNode | null;
   right: TreeNode | null;
   args: TreeNode[];
-  add_nodes: boolean;
+  arbitrary_args: boolean;
   user_input: boolean;
   static count: number = 0;
 
@@ -17,7 +17,7 @@ export class TreeNode {
     this.right = null;
     this.args = [];
     this.user_input = false;
-    this.add_nodes = false;
+    this.arbitrary_args = false;
   }
 
   setValue(value: string) {
@@ -45,7 +45,7 @@ export class TreeNode {
   setArgs() {
     TreeNode.count++;
     this.right = new TreeNode(TreeNode.count, "ARGS");
-    this.right.add_nodes = true;
+    this.right.arbitrary_args = true;
   }
 }
 class Tree {

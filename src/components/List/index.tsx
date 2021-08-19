@@ -12,7 +12,7 @@ import { useStyles } from "./styles";
 type Item = {
   name: string;
   args_quantity?: number;
-  add_nodes?: boolean;
+  arbitrary_args?: boolean;
   type?: string;
 };
 
@@ -53,7 +53,7 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
         if (node.args.length !== items[index].args_quantity) {
           node.args = [];
           node.addArguments(items[index].args_quantity);
-          node.add_nodes = items[index].add_nodes;
+          node.arbitrary_args = items[index].arbitrary_args;
         }
       }
       dispatch(updateTree());

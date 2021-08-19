@@ -27,6 +27,8 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
             if (node) {
               node.value = operator.name;
               node.type = "OPERATOR";
+              if (node.right && node.right.type === "ARGS")
+                node.right = new TreeNode(node.right.index);
               node.user_input = false;
               if (!node.left) node.setLeft();
               if (!node.right) node.setRight();

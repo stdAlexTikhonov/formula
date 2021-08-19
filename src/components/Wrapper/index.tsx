@@ -10,7 +10,7 @@ import { useAppSelector } from "../../hooks";
 type Item = {
   name: string;
   args_quantity?: number;
-  add_nodes?: boolean;
+  arbitrary_args?: boolean;
   type?: string;
 };
 
