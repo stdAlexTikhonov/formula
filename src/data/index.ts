@@ -10,6 +10,78 @@ export const DATA = {
     { name: "AMT_ANNUITY", type: "number" },
     { name: "CNT_FAM_MEMBERS", type: "string" },
   ],
+  OPERATORS: [
+    {
+      name: "and",
+      return_type: "boolean",
+      arguments_types: ["boolean", "boolean"],
+    },
+    {
+      name: "or",
+      return_type: "boolean",
+      arguments_types: ["boolean", "boolean"],
+    },
+    {
+      name: "+",
+      return_type: "Number",
+      arguments_types: ["Number", "Number"],
+    },
+    {
+      name: "-",
+      return_type: "Number",
+      arguments_types: ["Number", "Number"],
+    },
+    {
+      name: "*",
+      return_type: "Number",
+      arguments_types: ["Number", "Number"],
+    },
+    {
+      name: "/",
+      return_type: "Number",
+      arguments_types: ["Number", "Number"],
+    },
+    {
+      name: "<",
+      return_type: "boolean",
+      arguments_types: ["any", "any"],
+    },
+    {
+      name: "<=",
+      return_type: "boolean",
+      arguments_types: ["any", "any"],
+    },
+    {
+      name: "==",
+      return_type: "boolean",
+      arguments_types: ["any", "any"],
+    },
+    {
+      name: "!=",
+      return_type: "boolean",
+      arguments_types: ["any", "any"],
+    },
+    {
+      name: ">",
+      return_type: "boolean",
+      arguments_types: ["any", "any"],
+    },
+    {
+      name: ">=",
+      return_type: "boolean",
+      arguments_types: ["any", "any"],
+    },
+    {
+      name: "like",
+      return_type: "boolean",
+      arguments_types: ["string", "string"],
+    },
+    {
+      name: "ilike",
+      return_type: "boolean",
+      arguments_types: ["string", "string"],
+    },
+  ],
   FUNCTIONS: [
     { name: "curent_date" },
     { name: "current_time" },
