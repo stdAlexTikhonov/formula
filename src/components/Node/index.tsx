@@ -37,7 +37,7 @@ export const Node: React.FC<Props> = ({ node }) => {
         </IconButton>
       )}
       {node.left && <ComponentSelector node={node.left} />}
-      <Switcher index={node.index} value={node.value} />
+      <Switcher index={node.index} />
       {node.right && <ComponentSelector node={node.right} />}
     </Box>
   );

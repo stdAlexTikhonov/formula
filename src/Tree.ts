@@ -7,6 +7,7 @@ export class TreeNode {
   args: TreeNode[];
   arbitrary_args: boolean;
   user_input: boolean;
+  expected_type: string;
   static count: number = 0;
 
   constructor(index: number = 0, type: string = "OPERAND") {
@@ -18,6 +19,7 @@ export class TreeNode {
     this.args = [];
     this.user_input = false;
     this.arbitrary_args = false;
+    this.expected_type = "string";
   }
 
   setValue(value: string) {

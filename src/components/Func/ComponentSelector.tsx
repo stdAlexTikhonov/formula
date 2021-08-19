@@ -14,11 +14,6 @@ export const ComponentSelector: React.FC<Props> = ({ node }) => {
     case "OPERATOR":
       return <Node node={node} />;
     default:
-      return (
-        <Leaf
-          value={node.value ? node.value : ""}
-          index={node.index ? node.index : 0}
-        />
-      );
+      return <Leaf index={node.index ? node.index : 0} />;
   }
 };

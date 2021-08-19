@@ -30,7 +30,7 @@ export const Args: React.FC<Props> = ({ node }) => {
       case "OPERATOR":
         return <Node node={node} />;
       default:
-        return <Leaf value={node.value} index={node.index} />;
+        return <Leaf index={node.index} />;
     }
   };
 

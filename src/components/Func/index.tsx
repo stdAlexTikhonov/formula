@@ -33,7 +33,7 @@ export const Func: React.FC<Props> = ({ node }) => {
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
-      <Switcher index={node.index} value={node.value} />
+      <Switcher index={node.index} />
       {!state && <Typography className={classes.typography}>(</Typography>}
       <Box className={classes.box}>
         {node.args &&

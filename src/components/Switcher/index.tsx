@@ -3,15 +3,12 @@ import { TemporaryDrawer } from "../Drawer";
 import { useAppSelector } from "../../hooks";
 import { getDrawer } from "../../store/codeSlice";
 
-export const Switcher: React.FC<{ index: number; value: string }> = ({
-  index,
-  value,
-}) => {
+export const Switcher: React.FC<{ index: number }> = ({ index }) => {
   const drawer = useAppSelector(getDrawer);
 
   return drawer ? (
-    <TemporaryDrawer index={index} value={value} />
+    <TemporaryDrawer index={index} />
   ) : (
-    <CustomPopover index={index} value={value} />
+    <CustomPopover index={index} />
   );
 };
