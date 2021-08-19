@@ -19,7 +19,7 @@ export class TreeNode {
     this.args = [];
     this.user_input = false;
     this.arbitrary_args = false;
-    this.expected_type = "string";
+    this.expected_type = "any";
   }
 
   setValue(value: string) {
@@ -34,14 +34,16 @@ export class TreeNode {
     }
   }
 
-  setLeft() {
+  setLeft(expected_type: string) {
     TreeNode.count++;
     this.left = new TreeNode(TreeNode.count);
+    this.left.expected_type = expected_type;
   }
 
-  setRight() {
+  setRight(expected_type: string) {
     TreeNode.count++;
     this.right = new TreeNode(TreeNode.count);
+    this.right.expected_type = expected_type;
   }
 
   setArgs(arbitrary_args: boolean, args_len: number) {

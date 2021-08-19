@@ -48,7 +48,7 @@ export const TemporaryDrawer: React.FC<{
       <Trigger node={node} onClick={toggleDrawer(true)} />
       <Drawer anchor={"bottom"} open={state} onClose={toggleDrawer(false)}>
         <UserInput setNode={setNode} />
-        <CustomButtons node={node} setNode={setNode} />
+        <CustomButtons node={node} />
         {list()}
       </Drawer>
     </div>

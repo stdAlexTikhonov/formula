@@ -9,6 +9,7 @@ import { useAppDispatch } from "../../hooks";
 import { updateTree } from "../../store/codeSlice";
 import { useState } from "react";
 import { CustomIcon } from "../CustomIcon";
+import { Typography } from "@material-ui/core";
 
 type Props = {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -83,8 +84,15 @@ export const Trigger: React.FC<Props> = ({ onClick, node }) => {
       )}
     </Button>
   ) : (
-    <IconButton onClick={onClick}>
-      <AddIcon />
-    </IconButton>
+    <Box display="flex" flexDirection="column" alignItems="center">
+      <Box position="relative" width="100%">
+        <Typography style={{ position: "absolute" }} variant="caption">
+          {node.expected_type}
+        </Typography>
+      </Box>
+      <IconButton onClick={onClick}>
+        <AddIcon />
+      </IconButton>
+    </Box>
   );
 };

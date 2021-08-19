@@ -84,7 +84,7 @@ export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
         >
           <Box position="relative" maxWidth="300px">
             <UserInput setNode={setNode} />
-            <CustomButtons node={node} setNode={setNode} />
+            <CustomButtons node={node} />
             <List component="nav">
               <ListItem
                 key={0}

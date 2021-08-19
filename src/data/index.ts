@@ -23,23 +23,23 @@ export const DATA = {
     },
     {
       name: "+",
-      return_type: "Number",
-      arguments_types: ["Number", "Number"],
+      return_type: "number",
+      arguments_types: ["number", "number"],
     },
     {
       name: "-",
-      return_type: "Number",
-      arguments_types: ["Number", "Number"],
+      return_type: "number",
+      arguments_types: ["number", "number"],
     },
     {
       name: "*",
-      return_type: "Number",
-      arguments_types: ["Number", "Number"],
+      return_type: "number",
+      arguments_types: ["number", "number"],
     },
     {
       name: "/",
-      return_type: "Number",
-      arguments_types: ["Number", "Number"],
+      return_type: "number",
+      arguments_types: ["number", "number"],
     },
     {
       name: "<",

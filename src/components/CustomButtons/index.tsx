@@ -8,10 +8,9 @@ import { CustomIcon } from "../CustomIcon";
 
 type Props = {
   node: TreeNode;
-  setNode: any;
 };
 
-export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
+export const CustomButtons: React.FC<Props> = ({ node }) => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
   const data = useAppSelector(getData);
@@ -30,8 +29,8 @@ export const CustomButtons: React.FC<Props> = ({ node, setNode }) => {
               if (node.right && node.right.type === "ARGS")
                 node.right = new TreeNode(node.right.index);
               node.user_input = false;
-              if (!node.left) node.setLeft();
-              if (!node.right) node.setRight();
+              if (!node.left) node.setLeft(operator.arguments_types![0]);
+              if (!node.right) node.setRight(operator.arguments_types![1]);
             }
             dispatch(updateTree());
           }}

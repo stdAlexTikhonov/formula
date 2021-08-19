@@ -3,8 +3,11 @@ import type { RootState } from "./store";
 
 type Item = {
   name: string;
-  args_quantity: number;
-  add_nodes: boolean;
+  arguments_types?: string[];
+  return_type?: string;
+  type?: string;
+  is_operator?: boolean;
+  arbitrary_args?: boolean;
 };
 
 interface CodeSlice {
