@@ -1,7 +1,5 @@
 import { Box } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import { Leaf } from "../Leaf";
-import { Node } from "../Node";
 import { TreeNode } from "../../Tree";
 import { useState } from "react";
 import { useStyles } from "./styles";
@@ -10,6 +8,7 @@ import AddIcon from "@material-ui/icons/Add";
 import { useAppDispatch } from "../../hooks";
 import { updateTree } from "../../store/codeSlice";
 import { Switcher } from "../Switcher";
+import { ComponentSelector } from "./ComponentSelector";
 
 type Props = {
   node: TreeNode;
@@ -21,18 +20,6 @@ export const Func: React.FC<Props> = ({ node }) => {
   const [show, setShow] = useState(false);
   const classes = useStyles({ state });
   const handleClick = () => setState(!state);
-
-  const getComponent = (node: TreeNode) => {
-    switch (node.type) {
-      case "FUNCTION":
-        return <Func node={node} key={node.value} />;
-
-      case "OPERATOR":
-        return <Node node={node} key={node.value} />;
-      default:
-        return <Leaf value={node.value} index={node.index} />;
-    }
-  };
 
   const handleAddClick = () => {
     node.addArguments(1);
@@ -52,10 +39,10 @@ export const Func: React.FC<Props> = ({ node }) => {
         {node.args &&
           node.args.map((arg: TreeNode, i: number) => {
             return i === node.args.length - 1 ? (
-              getComponent(arg)
+              <ComponentSelector node={arg} />
             ) : (
               <>
-                {getComponent(arg)}
+                <ComponentSelector node={arg} />
                 <Typography className={classes.mid} onClick={handleClick}>
                   ,
                 </Typography>

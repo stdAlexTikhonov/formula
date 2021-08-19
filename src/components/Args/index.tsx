@@ -15,7 +15,7 @@ type Props = {
   node: TreeNode;
 };
 
-export const TestNode: React.FC<Props> = ({ node }) => {
+export const Args: React.FC<Props> = ({ node }) => {
   const dispatch = useAppDispatch();
   const [state, setState] = useState<boolean>(false);
   const [show, setShow] = useState(false);

@@ -1,6 +1,5 @@
-import { Func } from "../Func";
-import { Node } from "./";
-import { Args } from "../Args";
+import { Func } from "./";
+import { Node } from "../Node";
 import { Leaf } from "../Leaf";
 import { TreeNode } from "../../Tree";
 
@@ -14,8 +13,6 @@ export const ComponentSelector: React.FC<Props> = ({ node }) => {
       return <Func node={node} />;
     case "OPERATOR":
       return <Node node={node} />;
-    case "ARGS":
-      return <Args node={node} />;
     default:
       return (
         <Leaf
