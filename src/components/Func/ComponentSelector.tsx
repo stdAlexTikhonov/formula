@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const ComponentSelector: React.FC<Props> = ({ node }) => {
-  switch (node.type) {
+  switch (node.node_type) {
     case "FUNCTION":
       return <Func node={node} />;
     case "OPERATOR":

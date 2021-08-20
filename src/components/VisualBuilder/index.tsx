@@ -19,8 +19,8 @@ export const VisualBuilder = () => {
   }, [update_tree]);
 
   const traversTree = (node: TreeNode) => {
-    if (node.type === "OPERAND") return <Leaf index={node.index} />;
-    else if (node.type === "FUNCTION") return <Func node={node} />;
+    if (node.node_type === "OPERAND") return <Leaf index={node.index} />;
+    else if (node.node_type === "FUNCTION") return <Func node={node} />;
     else return <Node node={node} />;
   };
 

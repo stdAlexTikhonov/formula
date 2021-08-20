@@ -16,7 +16,7 @@ export const UserInput: React.FC<Props> = ({ setNode }) => {
 
   const handleClick = () => {
     dispatch(setCode(value));
-    node.type = "OPERAND";
+    node.node_type = "OPERAND";
     node.left = null;
     node.right = null;
     node.user_input = true;

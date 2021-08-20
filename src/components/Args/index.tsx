@@ -23,7 +23,7 @@ export const Args: React.FC<Props> = ({ node }) => {
   const handleClick = () => setState(!state);
 
   const getComponent = (node: TreeNode) => {
-    switch (node.type) {
+    switch (node.node_type) {
       case "FUNCTION":
         return <Func node={node} />;
 

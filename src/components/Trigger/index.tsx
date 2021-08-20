@@ -64,7 +64,7 @@ export const Trigger: React.FC<Props> = ({ onClick, node }) => {
           <ClearIcon style={{ fontSize: 15 }} />
         </IconButton>
       )}
-      {show_delete && node.left && node.left.type === "OPERATOR" && (
+      {show_delete && node.left && node.left.node_type === "OPERATOR" && (
         <IconButton
           size="small"
           onClick={handleSwapLeft}
@@ -73,7 +73,7 @@ export const Trigger: React.FC<Props> = ({ onClick, node }) => {
           <SyncAltIcon style={{ fontSize: 15 }} />
         </IconButton>
       )}
-      {show_delete && node.right && node.right.type === "OPERATOR" && (
+      {show_delete && node.right && node.right.node_type === "OPERATOR" && (
         <IconButton
           size="small"
           onClick={handleSwapRight}

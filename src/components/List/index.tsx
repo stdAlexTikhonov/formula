@@ -38,7 +38,7 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
 
     if (node) {
       node.value = value;
-      node.type = items[index].is_operator
+      node.node_type = items[index].is_operator
         ? "OPERATOR"
         : type === "functions"
         ? "FUNCTION"
