@@ -10,7 +10,7 @@ import { useAppSelector } from "../../hooks";
 import { UserInput } from "../UserInput";
 import { Trigger } from "../Trigger";
 
-export const TemporaryDrawer: React.FC<{
+export const CustomDrawer: React.FC<{
   index: number;
 }> = ({ index }) => {
   const dispatch = useAppDispatch();
