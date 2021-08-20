@@ -43,8 +43,8 @@ export const Args: React.FC<Props> = ({ node }) => {
     <Box
       display="flex"
       alignItems="center"
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
+      // onMouseEnter={() => setShow(true)}
+      // onMouseLeave={() => setShow(false)}
     >
       {!state && <Typography className={classes.typography}>(</Typography>}
       <Box className={classes.box}>
