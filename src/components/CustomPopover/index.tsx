@@ -20,12 +20,17 @@ export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
+
   const dispatch = useAppDispatch();
   const [node, setNode] = React.useState<TreeNode>(Tree.find(index));
   const [show, setShow] = React.useState<boolean>(false);
   const [type, setType] = React.useState<string | null>(null);
   const [open, setOpen] = React.useState(false);
   const code = useAppSelector(getCode);
+
+  useEffect(() => {
+    setNode(Tree.find(index));
+  }, [index]);
 
   useEffect(() => {
     setAnchorEl(null);
