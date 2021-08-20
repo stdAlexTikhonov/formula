@@ -50,11 +50,15 @@ export const Trigger: React.FC<Props> = ({ onClick, node }) => {
       onMouseEnter={() => setShowDelete(true)}
       onMouseLeave={() => setShowDelete(false)}
     >
-      {node.user_input && isNaN(parseInt(node.value)) ? (
-        <Box color="red">"{node.value}"</Box>
-      ) : (
-        <CustomIcon value={node.value} />
-      )}
+      <Box display="flex" flexDirection="column">
+        <Typography variant="caption">{node.expected_type}</Typography>
+        {node.user_input && isNaN(parseInt(node.value)) ? (
+          <Box color="red">"{node.value}"</Box>
+        ) : (
+          <CustomIcon value={node.value} />
+        )}
+        <Typography variant="caption">{node.type}</Typography>
+      </Box>
       {show_delete && (
         <IconButton
           size="small"

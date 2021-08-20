@@ -11,9 +11,11 @@ import { useStyles } from "./styles";
 
 type Item = {
   name: string;
+  type?: string;
   arbitrary_args?: boolean;
   is_operator?: boolean;
   arguments_types?: string[];
+  return_type?: string;
 };
 
 type Props = {
@@ -59,6 +61,9 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
           node.addArguments(items[index].arguments_types);
           node.arbitrary_args = items[index].arbitrary_args;
         }
+        node.type = items[index].return_type;
+      } else {
+        node.type = items[index].type;
       }
 
       dispatch(updateTree());

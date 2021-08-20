@@ -29,7 +29,7 @@ export const CustomButtons: React.FC<Props> = ({ node }) => {
               if (node.right && node.right.node_type === "ARGS")
                 node.right = new TreeNode(node.right.index);
               node.user_input = false;
-
+              node.type = operator.return_type!;
               node.setLeft(operator.arguments_types![0]);
               node.setRight(operator.arguments_types![1]);
             }
