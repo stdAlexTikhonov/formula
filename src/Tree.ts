@@ -49,11 +49,11 @@ export class TreeNode {
     this.right.expected_type = expected_type;
   }
 
-  setArgs(arbitrary_args: boolean, args_len: number) {
+  setArgs(arbitrary_args: boolean, arguments_types: string[]) {
     TreeNode.count++;
     this.right = new TreeNode(TreeNode.count, "ARGS");
     this.right.arbitrary_args = arbitrary_args;
-    if (args_len) this.right.addArguments(["string"]);
+    if (arguments_types) this.right.addArguments(arguments_types);
   }
 }
 class Tree {

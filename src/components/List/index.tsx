@@ -49,10 +49,10 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
 
       if (type === "functions") {
         if (items[index].is_operator) {
-          node.setLeft();
+          node.setLeft(items[index].arguments_types![0]);
           node.setArgs(
             items[index].arbitrary_args,
-            items[index].arguments_types!.length
+            items[index].arguments_types
           );
         } else {
           node.args = [];
