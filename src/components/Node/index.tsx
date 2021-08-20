@@ -23,6 +23,11 @@ export const Node: React.FC<Props> = ({ node }) => {
 
   return (
     <Box
+      color={
+        node.expected_type !== "any" && node.expected_type !== node.type
+          ? "red"
+          : "unset"
+      }
       className={classes.box}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}

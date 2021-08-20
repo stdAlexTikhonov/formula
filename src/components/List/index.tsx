@@ -8,6 +8,14 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { setCode, getCurrentIndex, updateTree } from "../../store/codeSlice";
 import Tree from "../../Tree";
 import { useStyles } from "./styles";
+import { Typography } from "@material-ui/core";
+
+const mapping_ = {
+  n: "num",
+  s: "str",
+  b: "bool",
+  d: "date",
+};
 
 type Item = {
   name: string;
@@ -80,10 +88,18 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
             selected={selectedIndex === ind}
             onClick={(event) => handleListItemClick(event, ind, item.name)}
           >
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
+            <Typography
+              variant="subtitle2"
+              style={{ fontStyle: "italic", paddingRight: 10 }}
+            >
+              {item.type
+                ? mapping_[item.type[0] as keyof typeof mapping_]
+                : mapping_[item.return_type![0] as keyof typeof mapping_]}
+            </Typography>
             <ListItemText primary={item.name} />
+            {item.arguments_types
+              ? "(" + item.arguments_types.join(",") + ")"
+              : ""}
           </ListItem>
         ))}
       </List>

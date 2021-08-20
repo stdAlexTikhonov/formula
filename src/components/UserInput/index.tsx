@@ -22,7 +22,13 @@ export const UserInput: React.FC<Props> = ({ setNode }) => {
     node.user_input = true;
     node.value = value;
     dispatch(updateTree());
+    node.type = isNaN(parseInt(value)) ? "string" : "number";
     setNode(node);
+  };
+
+  const handleChange = (e: any) => {
+    node.type = isNaN(parseInt(e.target.value)) ? "string" : "number";
+    setValue(e.target.value);
   };
 
   return (
@@ -32,7 +38,7 @@ export const UserInput: React.FC<Props> = ({ setNode }) => {
         style={{ alignSelf: "center", flexGrow: 1 }}
         placeholder="Пользовательский ввод"
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={handleChange}
       />
       <Button onClick={handleClick}>Ok</Button>
     </Box>
