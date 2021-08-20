@@ -22,7 +22,7 @@ export const Func: React.FC<Props> = ({ node }) => {
   const handleClick = () => setState(!state);
 
   const handleAddClick = () => {
-    node.addArguments(1);
+    node.addArguments(["string"]);
     dispatch(updateTree());
   };
 

@@ -26,11 +26,14 @@ export class TreeNode {
     this.value = value;
   }
 
-  addArguments(quantity: number) {
-    while (quantity > 0) {
+  addArguments(arguments_types: string[]) {
+    let i = 0;
+    while (i < arguments_types.length) {
       TreeNode.count++;
-      this.args.push(new TreeNode(TreeNode.count));
-      quantity--;
+      const node = new TreeNode(TreeNode.count);
+      node.expected_type = arguments_types[i];
+      this.args.push(node);
+      i++;
     }
   }
 
@@ -50,7 +53,7 @@ export class TreeNode {
     TreeNode.count++;
     this.right = new TreeNode(TreeNode.count, "ARGS");
     this.right.arbitrary_args = arbitrary_args;
-    if (args_len) this.right.addArguments(args_len);
+    if (args_len) this.right.addArguments(["string"]);
   }
 }
 class Tree {

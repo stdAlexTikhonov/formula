@@ -56,7 +56,7 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
           );
         } else {
           node.args = [];
-          node.addArguments(items[index].arguments_types!.length);
+          node.addArguments(items[index].arguments_types);
           node.arbitrary_args = items[index].arbitrary_args;
         }
       }

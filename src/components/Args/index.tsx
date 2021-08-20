@@ -35,7 +35,7 @@ export const Args: React.FC<Props> = ({ node }) => {
   };
 
   const handleAddClick = () => {
-    node.addArguments(1);
+    node.addArguments(["string"]);
     dispatch(updateTree());
   };
 
