@@ -24,8 +24,8 @@ export const Node: React.FC<Props> = ({ node }) => {
   return (
     <Box
       className={classes.box}
-      // onMouseEnter={() => setVisible(true)}
-      // onMouseLeave={() => setVisible(false)}
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
     >
       {visible && (
         <IconButton

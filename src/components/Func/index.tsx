@@ -30,8 +30,8 @@ export const Func: React.FC<Props> = ({ node }) => {
     <Box
       display="flex"
       alignItems="center"
-      // onMouseEnter={() => setShow(true)}
-      // onMouseLeave={() => setShow(false)}
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
     >
       <Leaf index={node.index} />
       {!state && <Typography className={classes.typography}>(</Typography>}

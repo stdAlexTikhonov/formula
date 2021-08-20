@@ -47,8 +47,8 @@ export const Trigger: React.FC<Props> = ({ onClick, node }) => {
       onClick={onClick}
       disableRipple={true}
       style={{ position: "relative" }}
-      // onMouseEnter={() => setShowDelete(true)}
-      // onMouseLeave={() => setShowDelete(false)}
+      onMouseEnter={() => setShowDelete(true)}
+      onMouseLeave={() => setShowDelete(false)}
     >
       {node.user_input && isNaN(parseInt(node.value)) ? (
         <Box color="red">"{node.value}"</Box>
