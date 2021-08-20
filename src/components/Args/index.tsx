@@ -1,6 +1,5 @@
 import { Box } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import { Leaf } from "../Leaf";
 import { Node } from "../Node";
 import { Func } from "../Func";
 import { TreeNode } from "../../Tree";
@@ -10,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import { useAppDispatch } from "../../hooks";
 import { updateTree } from "../../store/codeSlice";
+import { Switcher } from "../Switcher";
 
 type Props = {
   node: TreeNode;
@@ -30,7 +30,7 @@ export const Args: React.FC<Props> = ({ node }) => {
       case "OPERATOR":
         return <Node node={node} />;
       default:
-        return <Leaf index={node.index} />;
+        return <Switcher index={node.index} />;
     }
   };
 

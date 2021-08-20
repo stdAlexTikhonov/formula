@@ -1,5 +1,4 @@
 import Box from "@material-ui/core/Box";
-import { Leaf } from "../Leaf";
 import { Node } from "../Node";
 import { Func } from "../Func";
 import Tree, { TreeNode } from "../../Tree";
@@ -8,6 +7,7 @@ import { useAppSelector } from "../../hooks";
 import { getUpdateTree, getText } from "../../store/codeSlice";
 import { useStyles } from "./styles";
 import { Settings } from "./Settings";
+import { Switcher } from "../Switcher";
 
 export const VisualBuilder = () => {
   const update_tree = useAppSelector(getUpdateTree);
@@ -19,7 +19,7 @@ export const VisualBuilder = () => {
   }, [update_tree]);
 
   const traversTree = (node: TreeNode) => {
-    if (node.type === "OPERAND") return <Leaf index={node.index} />;
+    if (node.type === "OPERAND") return <Switcher index={node.index} />;
     else if (node.type === "FUNCTION") return <Func node={node} />;
     else return <Node node={node} />;
   };
