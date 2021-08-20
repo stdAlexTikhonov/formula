@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import { useAppDispatch } from "../../hooks";
 import { updateTree } from "../../store/codeSlice";
-import { Switcher } from "../Switcher";
+import { Leaf } from "../Leaf";
 import { ComponentSelector } from "./ComponentSelector";
 
 type Props = {
@@ -33,7 +33,7 @@ export const Func: React.FC<Props> = ({ node }) => {
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
-      <Switcher index={node.index} />
+      <Leaf index={node.index} />
       {!state && <Typography className={classes.typography}>(</Typography>}
       <Box className={classes.box}>
         {node.args &&

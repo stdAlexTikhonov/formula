@@ -6,7 +6,7 @@ import { getBrace } from "../../store/codeSlice";
 import { useStyles } from "./styles";
 import IconButton from "@material-ui/core/IconButton";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
-import { Switcher } from "../Switcher";
+import { Leaf } from "../Leaf";
 import { ComponentSelector } from "./ComponentSelector";
 
 type Props = {
@@ -37,7 +37,7 @@ export const Node: React.FC<Props> = ({ node }) => {
         </IconButton>
       )}
       {node.left && <ComponentSelector node={node.left} />}
-      <Switcher index={node.index} />
+      <Leaf index={node.index} />
       {node.right && <ComponentSelector node={node.right} />}
     </Box>
   );

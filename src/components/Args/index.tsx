@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import { useAppDispatch } from "../../hooks";
 import { updateTree } from "../../store/codeSlice";
-import { Switcher } from "../Switcher";
+import { Leaf } from "../Leaf";
 
 type Props = {
   node: TreeNode;
@@ -30,7 +30,7 @@ export const Args: React.FC<Props> = ({ node }) => {
       case "OPERATOR":
         return <Node node={node} />;
       default:
-        return <Switcher index={node.index} />;
+        return <Leaf index={node.index} />;
     }
   };
 
