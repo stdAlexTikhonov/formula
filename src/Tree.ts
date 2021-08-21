@@ -30,12 +30,15 @@ export class TreeNode {
     this.value = value;
   }
 
-  addArguments(arguments_types: string[]) {
+  addArguments(arguments_types?: string[]) {
     let i = 0;
-    while (i < arguments_types.length) {
+    const quantity = arguments_types ? arguments_types.length : 1;
+    while (i < quantity) {
       TreeNode.count++;
       const node = new TreeNode(TreeNode.count);
-      node.expected_type = arguments_types[i];
+      node.expected_type = arguments_types
+        ? arguments_types[i]
+        : this.args[0].type;
       this.args.push(node);
       i++;
     }
