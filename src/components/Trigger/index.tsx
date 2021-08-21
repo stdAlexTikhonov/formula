@@ -17,6 +17,20 @@ type Props = {
   setNode: any;
 };
 
+type UserInputProps = {
+  value: string;
+  type: string;
+};
+
+const UserInput: React.FC<UserInputProps> = ({ value, type }) => {
+  if (type === "string") {
+    if (value[0] === '"') return <Box color="brown">{value}</Box>;
+    else return <Box color="brown">"{value}"</Box>;
+  } else {
+    return <CustomIcon value={parseFloat(value).toString()} />;
+  }
+};
+
 export const Trigger: React.FC<Props> = ({ onClick, node, setNode }) => {
   const dispatch = useAppDispatch();
   const [show_delete, setShowDelete] = useState(false);
@@ -59,8 +73,8 @@ export const Trigger: React.FC<Props> = ({ onClick, node, setNode }) => {
           </Typography>
         )}
         <Box color={node.type_error ? "red" : "unset"}>
-          {node.user_input && isNaN(parseInt(node.value)) ? (
-            <Box color="brown">"{node.value}"</Box>
+          {node.user_input ? (
+            <UserInput value={node.value} type={node.type} />
           ) : (
             <CustomIcon value={node.value} />
           )}

@@ -6,9 +6,10 @@ import Tree from "../../Tree";
 
 type Props = {
   setNode: any;
+  onClose?: () => void;
 };
 
-export const UserInput: React.FC<Props> = ({ setNode }) => {
+export const UserInput: React.FC<Props> = ({ setNode, onClose }) => {
   const dispatch = useAppDispatch();
   const index = useAppSelector(getCurrentIndex);
   const node = Tree.find(index);
@@ -20,11 +21,12 @@ export const UserInput: React.FC<Props> = ({ setNode }) => {
     node.left = null;
     node.right = null;
     node.user_input = true;
-    node.value = value;
-    dispatch(updateTree());
     node.type = isNaN(parseInt(value)) ? "string" : "number";
+    node.value = value;
     node.checkType();
     setNode(node);
+    dispatch(updateTree());
+    if (onClose) onClose();
   };
 
   const handleChange = (e: any) => {
