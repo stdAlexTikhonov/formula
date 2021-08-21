@@ -45,7 +45,7 @@ export const CustomDrawer: React.FC<{
 
   return (
     <div>
-      <Trigger node={node} onClick={toggleDrawer(true)} />
+      <Trigger node={node} onClick={toggleDrawer(true)} setNode={setNode} />
       <Drawer anchor={"bottom"} open={state} onClose={toggleDrawer(false)}>
         <UserInput setNode={setNode} />
         <CustomButtons node={node} />

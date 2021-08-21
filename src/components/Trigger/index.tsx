@@ -14,9 +14,10 @@ import { Typography } from "@material-ui/core";
 type Props = {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   node: TreeNode;
+  setNode: any;
 };
 
-export const Trigger: React.FC<Props> = ({ onClick, node }) => {
+export const Trigger: React.FC<Props> = ({ onClick, node, setNode }) => {
   const dispatch = useAppDispatch();
   const [show_delete, setShowDelete] = useState(false);
 
@@ -24,7 +25,8 @@ export const Trigger: React.FC<Props> = ({ onClick, node }) => {
     e.preventDefault();
     e.stopPropagation();
     Tree.delete(node.index);
-    node.user_input = false;
+    const new_node = Tree.find(node.index);
+    setNode(new_node);
     dispatch(updateTree());
   };
 

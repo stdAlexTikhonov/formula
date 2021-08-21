@@ -71,7 +71,7 @@ export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
 
   return (
     <div>
-      <Trigger node={node} onClick={handleClick} />
+      <Trigger node={node} onClick={handleClick} setNode={setNode} />
       {open && (
         <Popover
           id={id}
