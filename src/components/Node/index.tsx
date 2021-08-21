@@ -23,11 +23,7 @@ export const Node: React.FC<Props> = ({ node }) => {
 
   return (
     <Box
-      color={
-        node.expected_type !== "any" && node.expected_type !== node.type
-          ? "red"
-          : "unset"
-      }
+      color={node.type_error ? "red" : "unset"}
       className={classes.box}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
@@ -41,9 +37,15 @@ export const Node: React.FC<Props> = ({ node }) => {
           <AutorenewIcon className={classes.icon} />
         </IconButton>
       )}
-      {node.left && <ComponentSelector node={node.left} />}
+      {node.left &&
+        (node.expected_type === "any" || node.expected_type === node.type) && (
+          <ComponentSelector node={node.left} />
+        )}
       <Leaf index={node.index} />
-      {node.right && <ComponentSelector node={node.right} />}
+      {node.right &&
+        (node.expected_type === "any" || node.expected_type === node.type) && (
+          <ComponentSelector node={node.right} />
+        )}
     </Box>
   );
 };

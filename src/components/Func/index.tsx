@@ -30,11 +30,7 @@ export const Func: React.FC<Props> = ({ node }) => {
     <Box
       display="flex"
       alignItems="center"
-      color={
-        node.expected_type !== "any" && node.expected_type !== node.type
-          ? "red"
-          : "unset"
-      }
+      color={node.type_error ? "red" : "unset"}
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >

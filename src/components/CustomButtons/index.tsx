@@ -33,6 +33,7 @@ export const CustomButtons: React.FC<Props> = ({ node }) => {
               node.setLeft(operator.arguments_types![0]);
               node.setRight(operator.arguments_types![1]);
             }
+            node.checkType();
             dispatch(updateTree());
           }}
           variant="outlined"

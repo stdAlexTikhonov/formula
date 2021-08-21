@@ -23,6 +23,7 @@ export const UserInput: React.FC<Props> = ({ setNode }) => {
     node.value = value;
     dispatch(updateTree());
     node.type = isNaN(parseInt(value)) ? "string" : "number";
+    node.checkType();
     setNode(node);
   };
 

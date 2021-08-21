@@ -51,26 +51,18 @@ export const Trigger: React.FC<Props> = ({ onClick, node }) => {
       onMouseLeave={() => setShowDelete(false)}
     >
       <Box display="flex" flexDirection="column">
-        {node.expected_type !== "any" && node.expected_type !== node.type && (
+        {node.type_error && (
           <Typography variant="caption" style={{ color: "red", fontSize: 10 }}>
             expected: {node.expected_type}
           </Typography>
         )}
-        <Box
-          color={
-            node.expected_type !== "any" && node.expected_type !== node.type
-              ? "red"
-              : "unset"
-          }
-        >
+        <Box color={node.type_error ? "red" : "unset"}>
           {node.user_input && isNaN(parseInt(node.value)) ? (
             <Box color="brown">"{node.value}"</Box>
           ) : (
             <CustomIcon value={node.value} />
           )}
         </Box>
-
-        {/* <Typography variant="caption">{node.type}</Typography> */}
       </Box>
       {show_delete && (
         <IconButton
@@ -101,15 +93,8 @@ export const Trigger: React.FC<Props> = ({ onClick, node }) => {
       )}
     </Button>
   ) : (
-    <Box display="flex" flexDirection="column" alignItems="center">
-      <Box position="relative" width="100%">
-        <Typography style={{ position: "absolute" }} variant="caption">
-          {node.expected_type}
-        </Typography>
-      </Box>
-      <IconButton onClick={onClick}>
-        <AddIcon />
-      </IconButton>
-    </Box>
+    <IconButton onClick={onClick}>
+      <AddIcon />
+    </IconButton>
   );
 };

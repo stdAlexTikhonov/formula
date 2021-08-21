@@ -73,7 +73,7 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
       } else {
         node.type = items[index].type;
       }
-
+      node.checkType();
       dispatch(updateTree());
     }
   };

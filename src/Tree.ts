@@ -9,6 +9,7 @@ export class TreeNode {
   user_input: boolean;
   expected_type: string;
   type: string;
+  type_error: boolean;
   static count: number = 0;
 
   constructor(index: number = 0, node_type: string = "OPERAND") {
@@ -21,7 +22,8 @@ export class TreeNode {
     this.user_input = false;
     this.arbitrary_args = false;
     this.expected_type = "any";
-    this.type = "hello";
+    this.type = "any";
+    this.type_error = false;
   }
 
   setValue(value: string) {
@@ -56,6 +58,11 @@ export class TreeNode {
     this.right = new TreeNode(TreeNode.count, "ARGS");
     this.right.arbitrary_args = arbitrary_args;
     if (arguments_types) this.right.addArguments(arguments_types);
+  }
+
+  checkType() {
+    this.type_error =
+      this.expected_type !== "any" && this.expected_type !== this.type;
   }
 }
 class Tree {
