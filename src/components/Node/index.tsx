@@ -37,15 +37,11 @@ export const Node: React.FC<Props> = ({ node }) => {
           <AutorenewIcon className={classes.icon} />
         </IconButton>
       )}
-      {node.left &&
-        (node.expected_type === "any" || node.expected_type === node.type) && (
-          <ComponentSelector node={node.left} />
-        )}
+      {node.left && !node.type_error && <ComponentSelector node={node.left} />}
       <Leaf index={node.index} />
-      {node.right &&
-        (node.expected_type === "any" || node.expected_type === node.type) && (
-          <ComponentSelector node={node.right} />
-        )}
+      {node.right && !node.type_error && (
+        <ComponentSelector node={node.right} />
+      )}
     </Box>
   );
 };
