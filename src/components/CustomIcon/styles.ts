@@ -1,10 +1,9 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
 
-export default makeStyles<Theme, { text: boolean }>((theme) => ({
+export default makeStyles((theme) => ({
   mathIcon: {
     "&:before": {
       fontFamily: "MathIcon",
-      fontSize: ({ text }) => (text ? 10 : "0.875rem"),
     },
   },
   eq: {

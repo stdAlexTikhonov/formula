@@ -1,16 +1,13 @@
 import useStyles from "./styles";
 import cn from "classnames";
 import Box from "@material-ui/core/Box";
-import { getText } from "../../store/codeSlice";
-import { useAppSelector } from "../../hooks";
 
 type Props = {
   value: string;
 };
 
 export const CustomIcon: React.FC<Props> = ({ value }) => {
-  const text = useAppSelector(getText);
-  const classes = useStyles({ text });
+  const classes = useStyles();
   const getIcon = (value: string) => {
     switch (value) {
       case "+":

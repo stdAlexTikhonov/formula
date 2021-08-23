@@ -4,15 +4,14 @@ import { Func } from "../Func";
 import Tree, { TreeNode } from "../../Tree";
 import { useEffect } from "react";
 import { useAppSelector } from "../../hooks";
-import { getUpdateTree, getText } from "../../store/codeSlice";
+import { getUpdateTree } from "../../store/codeSlice";
 import { useStyles } from "./styles";
 import { Settings } from "./Settings";
 import { Leaf } from "../Leaf";
 
 export const VisualBuilder = () => {
   const update_tree = useAppSelector(getUpdateTree);
-  const text = useAppSelector(getText);
-  const classes = useStyles({ text });
+  const classes = useStyles();
 
   useEffect(() => {
     traversTree(Tree.root);
