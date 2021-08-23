@@ -3,15 +3,19 @@ import { Node } from "../Node";
 import { Func } from "../Func";
 import Tree, { TreeNode } from "../../Tree";
 import { useEffect } from "react";
-import { useAppSelector } from "../../hooks";
-import { getUpdateTree } from "../../store/codeSlice";
+import { useAppSelector, useAppDispatch } from "../../hooks";
+import { getUpdateTree, toggleText } from "../../store/codeSlice";
 import { useStyles } from "./styles";
 import { Settings } from "./Settings";
 import { Leaf } from "../Leaf";
+import Button from "@material-ui/core/Button";
 
 export const VisualBuilder = () => {
   const update_tree = useAppSelector(getUpdateTree);
   const classes = useStyles();
+  const dispatch = useAppDispatch();
+
+  const handleClick = () => dispatch(toggleText());
 
   useEffect(() => {
     traversTree(Tree.root);
@@ -24,11 +28,19 @@ export const VisualBuilder = () => {
   };
 
   return (
-    <Box margin="auto" position="relative">
+    <Box
+      margin="auto"
+      position="relative"
+      display="flex"
+      flexDirection="column"
+    >
       <Settings />
       <Box className={classes.box}>
         <Box className={classes.inner_box}>{traversTree(Tree.root)}</Box>
       </Box>
+      <Button style={{ alignSelf: "flex-end" }} onClick={handleClick}>
+        Ok
+      </Button>
     </Box>
   );
 };
