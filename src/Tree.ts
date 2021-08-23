@@ -233,7 +233,7 @@ class Tree {
 
         traversal += " ";
 
-        traversal += start.value;
+        traversal += start.value.toUpperCase();
 
         traversal += " ";
 
@@ -243,7 +243,7 @@ class Tree {
       }
 
       if (start.node_type === "FUNCTION" || start.node_type === "ARGS") {
-        traversal += start.value + "(";
+        traversal += start.value.toUpperCase() + "(";
 
         if (start.args[0])
           traversal = this.print(start.args[0], traversal) + ", ";
