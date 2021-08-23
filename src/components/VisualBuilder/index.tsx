@@ -28,13 +28,7 @@ export const VisualBuilder = () => {
     <Box margin="auto" position="relative">
       <Settings />
       <Box className={classes.box}>
-        <Box className={classes.inner_box}>
-          {Array(10)
-            .fill(10)
-            .map((item) => (
-              <Box>wfwewewefwefwfwe</Box>
-            ))}
-        </Box>
+        <Box className={classes.inner_box}>{traversTree(Tree.root)}</Box>
       </Box>
     </Box>
   );

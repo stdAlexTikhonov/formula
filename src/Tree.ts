@@ -223,6 +223,63 @@ class Tree {
     }
     return false;
   }
+
+  print(start: TreeNode, traversal: string = "") {
+    if (start) {
+      if (start.node_type === "OPERATOR") {
+        traversal += "(";
+
+        traversal = this.print(start.left!, traversal);
+
+        traversal += " ";
+
+        traversal += start.value;
+
+        traversal += " ";
+
+        traversal = this.print(start.right!, traversal);
+
+        traversal += ")";
+      }
+
+      if (start.node_type === "FUNCTION" || start.node_type === "ARGS") {
+        traversal += start.value + "(";
+
+        if (start.args[0])
+          traversal = this.print(start.args[0], traversal) + ", ";
+        if (start.args[1])
+          traversal = this.print(start.args[1], traversal) + ", ";
+        if (start.args[2])
+          traversal = this.print(start.args[2], traversal) + ", ";
+        if (start.args[3])
+          traversal = this.print(start.args[3], traversal) + ", ";
+        if (start.args[4])
+          traversal = this.print(start.args[4], traversal) + ", ";
+        if (start.args[5])
+          traversal = this.print(start.args[5], traversal) + ", ";
+        if (start.args[6])
+          traversal = this.print(start.args[6], traversal) + ", ";
+        if (start.args[7])
+          traversal = this.print(start.args[7], traversal) + ", ";
+        if (start.args[8])
+          traversal = this.print(start.args[8], traversal) + ", ";
+        if (start.args[9]) traversal = this.print(start.args[9], traversal);
+
+        traversal += ")";
+      }
+
+      if (start.node_type === "OPERAND") {
+        if (start.type === "string" && start.user_input) traversal += ' "';
+        else traversal += " ";
+
+        traversal += start.value;
+
+        if (start.type === "string" && start.user_input) traversal += '" ';
+        else traversal += " ";
+      }
+    }
+    return traversal;
+  }
 }
 
 export default new Tree();
