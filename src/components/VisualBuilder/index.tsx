@@ -9,6 +9,7 @@ import { useStyles } from "./styles";
 import { Settings } from "./Settings";
 import { Leaf } from "../Leaf";
 import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
 
 export const VisualBuilder = () => {
   const update_tree = useAppSelector(getUpdateTree);
@@ -35,9 +36,9 @@ export const VisualBuilder = () => {
       flexDirection="column"
     >
       <Settings />
-      <Box className={classes.box}>
+      <Paper className={classes.box} elevation={3}>
         <Box className={classes.inner_box}>{traversTree(Tree.root)}</Box>
-      </Box>
+      </Paper>
       <Button style={{ alignSelf: "flex-end" }} onClick={handleClick}>
         Ok
       </Button>

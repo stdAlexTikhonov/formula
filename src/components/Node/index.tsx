@@ -28,15 +28,11 @@ export const Node: React.FC<Props> = ({ node }) => {
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
     >
-      {visible && (
-        <IconButton
-          onClick={handleClick}
-          className={classes.btn}
-          size={"small"}
-        >
-          <AutorenewIcon className={classes.icon} />
-        </IconButton>
-      )}
+      {/* {visible && ( */}
+      <IconButton onClick={handleClick} className={classes.btn} size={"small"}>
+        <AutorenewIcon className={classes.icon} />
+      </IconButton>
+      {/* )} */}
       {node.left && !node.type_error && <ComponentSelector node={node.left} />}
       <Leaf index={node.index} />
       {node.right && !node.type_error && (
