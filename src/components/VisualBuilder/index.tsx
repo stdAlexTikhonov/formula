@@ -12,7 +12,7 @@ import { Leaf } from "../Leaf";
 export const VisualBuilder = () => {
   const update_tree = useAppSelector(getUpdateTree);
   const text = useAppSelector(getText);
-  const classes = useStyles();
+  const classes = useStyles({ text });
 
   useEffect(() => {
     traversTree(Tree.root);
@@ -28,14 +28,12 @@ export const VisualBuilder = () => {
     <Box margin="auto" position="relative">
       <Settings />
       <Box className={classes.box}>
-        <Box
-          margin={text ? "unset" : "auto"}
-          width={text ? "100%" : "unset"}
-          display={text ? "flex" : "unset"}
-          flexWrap={text ? "wrap" : "unset"}
-          alignItems="flex-start"
-        >
-          {traversTree(Tree.root)}
+        <Box className={classes.inner_box}>
+          {Array(10)
+            .fill(10)
+            .map((item) => (
+              <Box>wfwewewefwefwfwe</Box>
+            ))}
         </Box>
       </Box>
     </Box>
