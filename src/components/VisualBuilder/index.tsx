@@ -16,7 +16,6 @@ export const VisualBuilder = () => {
 
   useEffect(() => {
     traversTree(Tree.root);
-    console.log(Tree.root);
   }, [update_tree]);
 
   const traversTree = (node: TreeNode) => {
