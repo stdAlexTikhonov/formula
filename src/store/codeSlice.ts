@@ -30,7 +30,7 @@ const initialState: CodeSlice = {
   update_tree: false,
   data: {},
   drawer: false,
-  text: false,
+  text: true,
 };
 
 export const codeSlice = createSlice({

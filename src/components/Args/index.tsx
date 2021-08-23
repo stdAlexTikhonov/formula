@@ -34,7 +34,8 @@ export const Args: React.FC<Props> = ({ node }) => {
     }
   };
 
-  const handleAddClick = () => {
+  const handleAddClick = (e: any) => {
+    e.stopPropagation();
     node.addArguments();
     dispatch(updateTree());
   };

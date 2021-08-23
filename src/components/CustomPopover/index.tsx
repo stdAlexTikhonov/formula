@@ -38,12 +38,14 @@ export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
   }, [code]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     setAnchorEl(event.currentTarget);
     setOpen(true);
     dispatch(setCurrentIndex(index));
   };
 
-  const handleClose = () => {
+  const handleClose = (e: any) => {
+    e.stopPropagation();
     setAnchorEl(null);
     setOpen(false);
   };
@@ -53,7 +55,8 @@ export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
     setType(_type);
   };
 
-  const handleCancel = () => {
+  const handleCancel = (e: any) => {
+    e.stopPropagation();
     setShow(false);
     setType(null);
   };
@@ -94,7 +97,10 @@ export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
               <ListItem
                 key={0}
                 button
-                onClick={() => handleListItemClick("variables")}
+                onClick={(e: any) => {
+                  e.stopPropagation();
+                  handleListItemClick("variables");
+                }}
               >
                 <ListItemText primary={"Переменные"} />
                 <ListItemIcon style={{ minWidth: 0 }}>
@@ -105,7 +111,10 @@ export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
               <ListItem
                 key={3}
                 button
-                onClick={() => handleListItemClick("functions")}
+                onClick={(e: any) => {
+                  e.stopPropagation();
+                  handleListItemClick("functions");
+                }}
               >
                 <ListItemText primary={"Функции"} />
                 <ListItemIcon style={{ minWidth: 0 }}>

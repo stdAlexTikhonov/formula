@@ -19,9 +19,13 @@ export const Func: React.FC<Props> = ({ node }) => {
   const [state, setState] = useState<boolean>(false);
   const [show, setShow] = useState(false);
   const classes = useStyles({ state });
-  const handleClick = () => setState(!state);
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    setState(!state);
+  };
 
-  const handleAddClick = () => {
+  const handleAddClick = (e: any) => {
+    e.stopPropagation();
     node.addArguments();
     dispatch(updateTree());
   };

@@ -42,6 +42,7 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
     index: number,
     value: string
   ) => {
+    event.stopPropagation();
     setSelectedIndex(index);
     dispatch(setCode(value));
     const node = Tree.find(index_in_tree);

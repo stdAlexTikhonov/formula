@@ -21,7 +21,8 @@ export const CustomButtons: React.FC<Props> = ({ node }) => {
       {operators.map((operator) => (
         <Button
           className={classes.btn}
-          onClick={() => {
+          onClick={(e: any) => {
+            e.stopPropagation();
             dispatch(setCode(operator.name));
             if (node) {
               node.value = operator.name;

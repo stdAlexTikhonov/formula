@@ -4,10 +4,9 @@ import { TreeNode } from "../../Tree";
 import { useAppSelector } from "../../hooks";
 import { getBrace } from "../../store/codeSlice";
 import { useStyles } from "./styles";
-import IconButton from "@material-ui/core/IconButton";
-import AutorenewIcon from "@material-ui/icons/Autorenew";
 import { Leaf } from "../Leaf";
 import { ComponentSelector } from "./ComponentSelector";
+import Button from "@material-ui/core/Button";
 
 type Props = {
   node: TreeNode;
@@ -16,28 +15,25 @@ type Props = {
 export const Node: React.FC<Props> = ({ node }) => {
   const brace = useAppSelector(getBrace);
   const [state, setState] = useState(false);
-  const [visible, setVisible] = useState(false);
+
   const classes = useStyles({ state, brace });
 
-  const handleClick = () => setState(!state);
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    setState(!state);
+  };
 
   return (
-    <Box
-      color={node.type_error ? "red" : "unset"}
-      className={classes.box}
-      onMouseEnter={() => setVisible(true)}
-      onMouseLeave={() => setVisible(false)}
-    >
-      {/* {visible && ( */}
-      <IconButton onClick={handleClick} className={classes.btn} size={"small"}>
-        <AutorenewIcon className={classes.icon} />
-      </IconButton>
-      {/* )} */}
-      {node.left && !node.type_error && <ComponentSelector node={node.left} />}
-      <Leaf index={node.index} />
-      {node.right && !node.type_error && (
-        <ComponentSelector node={node.right} />
-      )}
-    </Box>
+    <Button onClick={handleClick} disableRipple={true}>
+      <Box className={classes.box} color={node.type_error ? "red" : "unset"}>
+        {node.left && !node.type_error && (
+          <ComponentSelector node={node.left} />
+        )}
+        <Leaf index={node.index} />
+        {node.right && !node.type_error && (
+          <ComponentSelector node={node.right} />
+        )}
+      </Box>
+    </Button>
   );
 };

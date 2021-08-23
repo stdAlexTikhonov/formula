@@ -6,7 +6,7 @@ import Tree from "../../Tree";
 
 type Props = {
   setNode: any;
-  onClose?: () => void;
+  onClose?: (e: any) => void;
 };
 
 export const UserInput: React.FC<Props> = ({ setNode, onClose }) => {
@@ -15,7 +15,7 @@ export const UserInput: React.FC<Props> = ({ setNode, onClose }) => {
   const node = Tree.find(index);
   const [value, setValue] = React.useState(node.user_input ? node.value : "");
 
-  const handleClick = () => {
+  const handleClick = (e: any) => {
     dispatch(setCode(value));
     node.node_type = "OPERAND";
     node.left = null;
@@ -26,7 +26,7 @@ export const UserInput: React.FC<Props> = ({ setNode, onClose }) => {
     node.checkType();
     setNode(node);
     dispatch(updateTree());
-    if (onClose) onClose();
+    if (onClose) onClose(e);
   };
 
   const handleChange = (e: any) => {
