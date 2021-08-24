@@ -16,6 +16,7 @@ const mapping_ = {
   s: "str",
   b: "bool",
   d: "date",
+  a: "any",
 };
 
 type Item = {

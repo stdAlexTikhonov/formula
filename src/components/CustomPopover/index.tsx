@@ -90,7 +90,7 @@ export const CustomPopover: React.FC<{ index: number }> = ({ index }) => {
             horizontal: "center",
           }}
         >
-          <Box position="relative" maxWidth="300px">
+          <Box position="relative" maxWidth="300px" height="400px">
             <UserInput setNode={setNode} onClose={handleClose} />
             <CustomButtons node={node} />
             <List component="nav">
