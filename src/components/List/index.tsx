@@ -9,6 +9,7 @@ import { setCode, getCurrentIndex, updateTree } from "../../store/codeSlice";
 import Tree from "../../Tree";
 import { useStyles } from "./styles";
 import { Typography } from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
 
 const mapping_ = {
   n: "num",
@@ -91,12 +92,16 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
           >
             <Typography
               variant="subtitle2"
-              style={{ fontStyle: "italic", paddingRight: 10 }}
+              style={{ fontStyle: "italic", paddingRight: 10, minWidth: 30 }}
             >
               {item.type
                 ? mapping_[item.type[0] as keyof typeof mapping_]
                 : mapping_[item.return_type![0] as keyof typeof mapping_]}
             </Typography>
+            <Divider
+              orientation="vertical"
+              style={{ height: 28, marginRight: 10 }}
+            />
             <ListItemText primary={item.name} />
             {item.arguments_types
               ? "(" + item.arguments_types.join(",") + ")"

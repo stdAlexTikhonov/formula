@@ -26,9 +26,9 @@ export const Settings = () => {
       display="flex"
       flexDirection="column"
     >
-      <IconButton onClick={handleDrawer}>
+      {/* <IconButton onClick={handleDrawer}>
         <SettingsIcon />
-      </IconButton>
+      </IconButton> */}
       <IconButton onClick={handleBrace}>()</IconButton>
       <IconButton onClick={handleReset}>
         <ClearIcon />
