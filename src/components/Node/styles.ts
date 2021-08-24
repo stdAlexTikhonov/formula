@@ -11,11 +11,22 @@ export const useStyles = makeStyles<Theme, { state: boolean; brace: boolean }>({
     margin: 5,
     padding: 5,
     position: "relative",
+  },
+  button: {
     borderRadius: 10,
   },
-  mid: {
-    margin: 15,
-    fontSize: 25,
+  block: {
+    borderRadius: 10,
+    transition: "transform 1s",
+  },
+  block_transform: {
+    transform: ({ state }) => (state ? "rotate(-90deg)" : "rotate(90deg)"),
+  },
+  node: {
+    transition: "transform 1s",
+  },
+  node_transform: {
+    transform: ({ state }) => (state ? "rotate(90deg)" : "rotate(-90deg)"),
   },
   btn: {
     position: "absolute",
