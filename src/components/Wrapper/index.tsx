@@ -12,6 +12,7 @@ type Item = {
   arbitrary_args?: boolean;
   type?: string;
   arguments_types?: string[];
+  group: string;
 };
 
 export const Wrapper: React.FC<{ type: string }> = ({ type }) => {

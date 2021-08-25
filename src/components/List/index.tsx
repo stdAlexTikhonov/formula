@@ -32,6 +32,7 @@ type Item = {
   is_operator?: boolean;
   arguments_types?: string[];
   return_type?: string;
+  group: string;
 };
 
 type Props = {
@@ -44,24 +45,19 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
   const index_in_tree = useAppSelector(getCurrentIndex);
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
-  const [transformed_list] = useState({
-    n: [] as Item[],
-    s: [] as Item[],
-    b: [] as Item[],
-    d: [] as Item[],
-    a: [] as Item[],
-  });
-  const [keys_] = useState(Object.keys(transformed_list));
+  const [transformed_list] = useState<any>({});
+
+  const [keys_, setKeys] = useState<string[]>([]);
 
   useEffect(() => {
     items.forEach((item: Item) => {
-      if (item)
-        transformed_list[
-          `${
-            item.type ? item.type[0] : item.return_type![0]
-          }` as keyof typeof mapping_
-        ].push(item);
+      if (item) {
+        if (transformed_list[`${item.group[0]}`])
+          transformed_list[`${item.group[0]}`].push(item);
+        else transformed_list[`${item.group[0]}`] = [item];
+      }
     });
+    setKeys(Object.keys(transformed_list));
   }, []);
 
   const handleListItemClick = (
@@ -113,7 +109,10 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
           0 ? (
           <>
             <Typography variant="caption" style={{ paddingLeft: 15 }}>
-              {an_mapping_[key_ as keyof typeof an_mapping_]}
+              {an_mapping_[key_ as keyof typeof an_mapping_]
+                ? an_mapping_[key_ as keyof typeof an_mapping_]
+                : transformed_list[key_ as keyof typeof transformed_list][0]
+                    .group}
             </Typography>
             <Divider />
             <List component="nav">
@@ -135,11 +134,7 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
                         minWidth: 30,
                       }}
                     >
-                      {item.type
-                        ? mapping_[item.type[0] as keyof typeof mapping_]
-                        : mapping_[
-                            item.return_type![0] as keyof typeof mapping_
-                          ]}
+                      {mapping_[item.group[0] as keyof typeof mapping_]}
                     </Typography>
                     <Divider
                       orientation="vertical"

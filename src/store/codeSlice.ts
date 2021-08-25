@@ -8,6 +8,7 @@ type Item = {
   type?: string;
   is_operator?: boolean;
   arbitrary_args?: boolean;
+  group: string;
 };
 
 interface CodeSlice {
