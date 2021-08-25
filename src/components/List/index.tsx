@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/Inbox";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { setCode, getCurrentIndex, updateTree } from "../../store/codeSlice";
 import Tree from "../../Tree";
@@ -17,6 +15,14 @@ const mapping_ = {
   b: "bool",
   d: "date",
   a: "any",
+};
+
+const an_mapping_ = {
+  n: "Числовые",
+  s: "Строковые",
+  b: "Логические",
+  d: "Работа с датами",
+  a: "Остальные",
 };
 
 type Item = {
@@ -37,7 +43,26 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
   const dispatch = useAppDispatch();
   const index_in_tree = useAppSelector(getCurrentIndex);
   const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState(-1);
+  const [transformed_list] = useState({
+    n: [] as Item[],
+    s: [] as Item[],
+    b: [] as Item[],
+    d: [] as Item[],
+    a: [] as Item[],
+  });
+  const [keys_] = useState(Object.keys(transformed_list));
+
+  useEffect(() => {
+    items.forEach((item: Item) => {
+      if (item)
+        transformed_list[
+          `${
+            item.type ? item.type[0] : item.return_type![0]
+          }` as keyof typeof mapping_
+        ].push(item);
+    });
+  }, []);
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -83,33 +108,54 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
 
   return (
     <div className={classes.root}>
-      <List component="nav">
-        {items.map((item: Item, ind: number) => (
-          <ListItem
-            key={ind}
-            button
-            selected={selectedIndex === ind}
-            onClick={(event) => handleListItemClick(event, ind, item.name)}
-          >
-            <Typography
-              variant="subtitle2"
-              style={{ fontStyle: "italic", paddingRight: 10, minWidth: 30 }}
-            >
-              {item.type
-                ? mapping_[item.type[0] as keyof typeof mapping_]
-                : mapping_[item.return_type![0] as keyof typeof mapping_]}
+      {keys_.map((key_: string) => {
+        return transformed_list[key_ as keyof typeof transformed_list].length >
+          0 ? (
+          <>
+            <Typography variant="caption" style={{ paddingLeft: 15 }}>
+              {an_mapping_[key_ as keyof typeof an_mapping_]}
             </Typography>
-            <Divider
-              orientation="vertical"
-              style={{ height: 28, marginRight: 10 }}
-            />
-            <ListItemText primary={item.name} />
-            {item.arguments_types
-              ? "(" + item.arguments_types.join(",") + ")"
-              : ""}
-          </ListItem>
-        ))}
-      </List>
+            <Divider />
+            <List component="nav">
+              {transformed_list[key_ as keyof typeof transformed_list].map(
+                (item: Item, ind: number) => (
+                  <ListItem
+                    key={ind}
+                    button
+                    selected={selectedIndex === ind}
+                    onClick={(event) =>
+                      handleListItemClick(event, ind, item.name)
+                    }
+                  >
+                    <Typography
+                      variant="subtitle2"
+                      style={{
+                        fontStyle: "italic",
+                        paddingRight: 10,
+                        minWidth: 30,
+                      }}
+                    >
+                      {item.type
+                        ? mapping_[item.type[0] as keyof typeof mapping_]
+                        : mapping_[
+                            item.return_type![0] as keyof typeof mapping_
+                          ]}
+                    </Typography>
+                    <Divider
+                      orientation="vertical"
+                      style={{ height: 28, marginRight: 10 }}
+                    />
+                    <ListItemText primary={item.name} />
+                    {item.arguments_types
+                      ? "(" + item.arguments_types.join(",") + ")"
+                      : ""}
+                  </ListItem>
+                )
+              )}
+            </List>
+          </>
+        ) : null;
+      })}
     </div>
   );
 };
