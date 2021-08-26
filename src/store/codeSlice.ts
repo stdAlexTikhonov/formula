@@ -21,6 +21,7 @@ interface CodeSlice {
   };
   drawer: boolean;
   text: boolean;
+  animation: boolean;
 }
 
 // Define the initial state using that type
@@ -32,6 +33,7 @@ const initialState: CodeSlice = {
   data: {},
   drawer: false,
   text: true,
+  animation: false,
 };
 
 export const codeSlice = createSlice({
@@ -59,6 +61,9 @@ export const codeSlice = createSlice({
     toggleText: (state) => {
       state.text = !state.text;
     },
+    toggleAnimation: (state) => {
+      state.animation = !state.animation;
+    },
     // incrementByAmount: (state, action: PayloadAction<number>) => {
     //   state.value += action.payload;
     // },
@@ -74,6 +79,7 @@ export const {
   setData,
   toggleDrawer,
   toggleText,
+  toggleAnimation,
 } = codeSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
@@ -90,5 +96,7 @@ export const getData = (state: RootState) => state.code.data;
 export const getDrawer = (state: RootState) => state.code.drawer;
 
 export const getText = (state: RootState) => state.code.text;
+
+export const getAnimation = (state: RootState) => state.code.animation;
 
 export default codeSlice.reducer;

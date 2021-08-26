@@ -11,10 +11,9 @@ export const useStyles = makeStyles<Theme, { state: boolean; brace: boolean }>({
     margin: 5,
     padding: 5,
     position: "relative",
-  },
-  button: {
     borderRadius: 10,
   },
+  button: {},
   block: {
     borderRadius: 10,
     transition: "transform 1s",

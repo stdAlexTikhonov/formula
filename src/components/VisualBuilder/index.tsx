@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { getUpdateTree, toggleText } from "../../store/codeSlice";
 import { useStyles } from "./styles";
-import { Settings } from "./Settings";
+import { Settings } from "../Settings";
 import { Leaf } from "../Leaf";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
