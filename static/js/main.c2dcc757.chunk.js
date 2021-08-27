@@ -1877,7 +1877,7 @@
             t = l();
           return (
             Object(r.useEffect)(function () {
-              fetch("../config.txt")
+              fetch("/formula/config.txt")
                 .then(function (e) {
                   return e.text();
                 })
