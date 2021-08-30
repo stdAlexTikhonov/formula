@@ -1,0 +1,16 @@
+{
+  "production": false,
+  "authUrl": "http://192.168.10.21:8090/auth/",
+  "modelDesignerApiUrl": "http://192.168.10.25/back",
+  "modelDesignerSchemaPath": "/api/v1/openapi.json",
+  "dataDiscoveryApiUrl": "http://192.168.10.25/back",
+  "dataDiscoverySchemaPath": "/api/v1/openapi.json",
+  "modelManagerApiTestUrl": "http://192.168.10.27:8001",
+  "modelManagerApiUrl": "http://192.168.10.27",
+  "modelManagerSchemaPath": "/api/v2/mm/openapi.json",
+  "modelLauncherSchemaPath": "/api/v2/ml/openapi.json",
+  "modelManagerTestSchemaPath": "/openapi.json",
+  "authClientId": "poly-js-client",
+  "authRealm": "Polymatica",
+  "locale": "ru"
+}
