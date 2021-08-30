@@ -63,7 +63,8 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number,
-    value: string
+    value: string,
+    key_: string
   ) => {
     event.stopPropagation();
     setSelectedIndex(index);
@@ -72,7 +73,7 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
 
     if (node) {
       node.value = value;
-      node.node_type = items[index].is_operator
+      node.node_type = transformed_list[key_][index].is_operator
         ? "OPERATOR"
         : type === "functions"
         ? "FUNCTION"
@@ -82,20 +83,20 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
       node.user_input = false;
 
       if (type === "functions") {
-        if (items[index].is_operator) {
-          node.setLeft(items[index].arguments_types![0]);
+        if (transformed_list[key_][index].is_operator) {
+          node.setLeft(transformed_list[key_][index].arguments_types![0]);
           node.setArgs(
-            items[index].arbitrary_args,
-            items[index].arguments_types
+            transformed_list[key_][index].arbitrary_args,
+            transformed_list[key_][index].arguments_types
           );
         } else {
           node.args = [];
-          node.addArguments(items[index].arguments_types);
-          node.arbitrary_args = items[index].arbitrary_args;
+          node.addArguments(transformed_list[key_][index].arguments_types);
+          node.arbitrary_args = transformed_list[key_][index].arbitrary_args;
         }
-        node.type = items[index].return_type;
+        node.type = transformed_list[key_][index].return_type;
       } else {
-        node.type = items[index].type;
+        node.type = transformed_list[key_][index].type;
       }
       node.checkType();
       dispatch(updateTree());
@@ -123,7 +124,7 @@ export const CustomList: React.FC<Props> = ({ items, type }) => {
                     button
                     selected={selectedIndex === ind}
                     onClick={(event) =>
-                      handleListItemClick(event, ind, item.name)
+                      handleListItemClick(event, ind, item.name, key_)
                     }
                   >
                     <Typography
