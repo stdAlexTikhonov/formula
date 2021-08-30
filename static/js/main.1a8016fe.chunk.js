@@ -1879,13 +1879,10 @@
             Object(r.useEffect)(function () {
               fetch("/formula/config.json")
                 .then(function (e) {
-                  return e.text();
+                  return e.json();
                 })
                 .then(function (e) {
-                  var t = e.split("\r\n").map(function (e) {
-                    return e.split("\n");
-                  });
-                  console.log(t);
+                  console.log(e);
                 }),
                 t(y(Ge));
             }, []),
